@@ -3,14 +3,13 @@ package com.example
 class Vehicle {
 
     String name
+    Model model
 
-    String make
-    String model
-
+    Make getMake() {
+        model.make
+    }
 
     static constraints = {
         name maxSize: 255
-        make inList: ['Ford', 'Chevrolet', 'Nissan']
-        model nullable: true
     }
 }

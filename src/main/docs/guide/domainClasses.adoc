@@ -1,4 +1,14 @@
-Grails is an https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller[Model View Controller] (MVC) framework, based upon the Spring Boot project. However, Grails goes farther than most frameworks by following a https://en.wikipedia.org/wiki/Convention_over_configuration["Convention over Configuration"] approach to development. This means that for many artefact types in Grails (controllers, views, etc), you simply create a file in a particular directory in your project, and Grails will automatically wire it into your application without any additional configuration on your part.
+== MVC
+
+Grails is an https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller[Model View Controller] (MVC) framework, based upon the Spring Boot project. Typically an MVC application divides the responsibilities of the app into three categories:
+
+1. Model - code that defines and manages the data
+2. View - code that manages the presentation of data (e.g, HTML page)
+3. Controller - code that defines the business logic of the application, and manages the transfer of data between the model and the view
+
+Typically an object-oriented MVC framework requires the developer to configure which classes correspond to each of the three categories above. However, Grails goes farther than most frameworks by following a https://en.wikipedia.org/wiki/Convention_over_configuration["Convention over Configuration"] approach to development. This means that for many artefact types in Grails (controllers, views, etc), you simply create a file in a particular directory in your project, and Grails will automatically wire it into your application without any additional configuration on your part.
+
+TIP: Handling the mapping of domain classes to database tables (and other persistent stores) is the job of http://gorm.grails.org/latest/[GORM], the Grails Object Relational Mapper. GORM is a powerful tool in the Grails framework, and can even be used standalone outside of a Grails project. It supports relational databases (via Hibernate) as well as MongoDb, Neo4j, Redis and Cassandra datasources. Please see the http://gorm.grails.org/latest/hibernate/manual/index.html[GORM documentation] for more information.
 
 When building a MVC application, it is typical to start with the "M" (Model), also known as the "Domain model". In Grails, your domain model is defined with Groovy classes under `grails-app/domain`. Let's create a domain class.
 
@@ -50,14 +60,147 @@ class Vehicle {
 
 Please see the Grails documentation for a complete list and documentation of how to use https://docs.grails.org/latest/ref/Domain%20Classes/Usage.html[domain classes] and https://docs.grails.org/latest/ref/Constraints/Usage.html[constraints]
 
+== DB Console
+
 If you run the app again, you should see the same page as before. However, you can login to the DB Console and view your new database table.
 
 Browse to `http://localhost:8080/dbconsole` and login. The default username is `sa`, without a password. The default JDBC URL is: `jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE`
 
 image::{commondir}/guide/images/dbconsole.png[DBConsole]
 
-NOTE: You can view the JDBC url in `application.yml`, under `environments.development.dataSource.url`
+NOTE: You can view the JDBC url in `application.yml`, under `environments` `development` `dataSource` `url`
 
 Once you've logged in to the DB Console, you should see your new `VEHICLES` table in the left-hand sidebar. Click the `+` icon to expand the table - you should see a list of columns, including the three `String` fields we just defined, `name`, `make,` and `model`.
 
 image::{commondir}/guide/images/dbconsole-2.png[DBConsole]
+
+== Expand the Domain Model
+
+For our `Vehicle` class, it doesn't really make sense that `make` and `model` are plain Strings, since models should actually be associated with makes. Let's update our domain model to be more robust.
+
+Create two new domain classes:
+
+
+[source, bash]
+----
+$ ./grailsw create-domain-class com.example.Make
+
+| Created grails-app/domain/com/example/Make.groovy
+| Created src/test/groovy/com/example/Make.groovy
+
+$ ./grailsw create-domain-class com.example.Model
+
+| Created grails-app/domain/com/example/Model.groovy
+| Created src/test/groovy/com/example/Model.groovy
+----
+
+Edit these two files with the following content:
+
+[source,groovy]
+.grails-app/domain/com/example/Make.groovy
+----
+include::{sourceDir}/grails-app/domain/com/example/Make.groovy[]
+----
+
+[source,groovy]
+.grails-app/domain/com/example/Model.groovy
+----
+include::{sourceDir}/grails-app/domain/com/example/Model.groovy[]
+----
+
+Now, update `Vehicle.groovy` to use the new `Make` and `Model` classes instead of `String`.
+
+[source,groovy]
+.grails-app/domain/com/example/Vehicle.groovy
+----
+package com.example
+
+class Vehicle {
+
+    String name
+    Model model <1>
+
+    Make getMake() {  <2>
+        model.make
+    }
+
+    static constraints = {
+        name maxSize: 255
+    }
+}
+
+----
+<1> Replace the `String model` with our new `Model` class.
+<2> Replace `String make` with a `getMake` instance method which returns the `Make` property of our `Model`
+
+[NOTE]
+====
+Because `Model` is associated with `Make`, we don't need to persist the `Make` in our `Vehicle` class (and duplicate the data). Instead, we can define a custom "getter" method which returns the `Make` from the `Model` association. Because Groovy allows property (dot) access to getter methods, we can now write the following code:
+
+[source, groovy]
+----
+def vehicle = Vehicle.findByName('pickup')
+if(vehicle) {
+    println vehicle.model // e.g, 'Titan'
+    println vehicle.make // e.g, 'Nissan'
+}
+----
+
+====
+
+Grails (via GORM) will now create three tables in our database, for our three domain classes, and create the necessary associations between the tables. Run the app again and open the DB Console to view the new tables.
+
+== BootStrap
+
+Every Grails project includes a `BootStrap.groovy` file under `grails-app/init`. This file can be used for any custom logic you want to happen during application startup. One excellent use of the file is to preload some data in our database. Let's create a few instances of our three domain classes.
+
+Edit `grails-app/init/BootStrap.groovy`, as shown below:
+
+[source,groovy]
+.grails-app/domain/com/example/Make.groovy
+----
+include::{sourceDir}/grails-app/init/creating/a/grails/application/BootStrap.groovy[]
+----
+
+Now restart the application, and browse to the DBConsole, you should be able to expand the three tables and see our newly created data.
+
+
+== Datasource configuration
+By default, Grails configures an in-memory H2 database, which is dropped and recreated every time the app is restarted. This will be sufficient for our purposes in this guide, however, you can easily change this to a local database instance by configuring your own datasource. We'll use MySQL as an example.
+
+Edit `build.gradle`
+
+[source,groovy]
+.build.gradle
+----
+dependencies {
+    //...
+
+    runtime 'mysql:mysql-connector-java:5.1.40' <1>
+----
+<1> Add the MySQL JDBC driver as a dependency
+
+WARNING: Be sure to add the MySQL dependency to the `dependencies` section of the `build.gradle` file, and not the `buildscript`/`dependencies` section. The former is for application dependencies (needed for at compile time, runtime, or testing), whereas the `buildscript` `dependencies` is for those needed as part of the Gradle build process (managing static assets, for example).
+
+Edit `application.yml`
+
+[source,yml]
+.grails-app/conf/application.yml
+----
+dataSource:
+    pooled: true
+    jmxExport: true
+    driverClassName: com.mysql.jdbc.Driver   <1>
+    dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    username: sa
+    password: testing
+environments:
+    development:
+        dataSource:
+            dbCreate: update
+            url: jdbc:mysql://127.0.0.1:3306/myapp <2>
+----
+<1> Change the `driverClassName` and `dialect` to MySQL settings
+<2> This assumes you have a local MySQL instance with a database named `myapp`
+
+
