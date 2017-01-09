@@ -1,0 +1,20 @@
+gettingStarted: 
+  title: Getting Started
+  requirements: What you will need
+  howto: How to complete the guide
+creatingTheApp:
+  title: Creating your App
+runningTheApp:
+  title: Running the App
+domainClasses:
+  title: Domain Classes
+controllers:
+  title: Controllers
+views:
+  title: Views
+services:
+  title: Services
+testing:
+  title: Testing your App
+deployment:
+  title: Deploying your App

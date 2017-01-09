@@ -1,0 +1,9 @@
+sudo: false
+cache:
+  directories:
+  - $HOME/.gradle
+jdk:
+- oraclejdk8
+before_script:
+- rm -rf target
+script: ./travis-build.sh

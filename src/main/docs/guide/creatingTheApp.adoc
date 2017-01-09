@@ -1,0 +1,139 @@
+For this guide, you can either create the starting project yourself, or use the `initial` project included in the guide's repo to get started. If you choose to use the `initial` project, you can safely skip this section and continue to <<runningTheApp>> If you would like to install Grails on your computer, follow one of the options below.
+
+[TIP]
+====
+Did you know you can download a complete Grails project without installing any additional tools? Go to http://start.grails.org[start.grails.org] and use the *Grails Application Forge* to generate your Grails project. You can choose your project type (Application or Plugin), pick a version of Grails, and choose a Profile - then click "Generate Project" to download a ZIP file. No Grails installation necessary!
+
+You can even download your project from the command line using a HTTP tool like `curl` (see http://start.grails.org[start.grails.org] for API documentation):
+
+[source, bash]
+----
+curl -O start.grails.org/myapp.zip -d version=3.2.4 -d profile=angular
+----
+====
+
+== Installing Grails
+
+=== SDKMan
+
+http://sdkman.io['sdkman'] is a popular command line utility for installing and managing Grails installations (as well as other JVM frameworks and languages). Install `sdkman` by running the following command in your Unix terminal:
+
+[source, bash]
+----
+$ curl -s "https://get.sdkman.io" | bash
+----
+
+Once the installation is complete, install the latest version of Grails (this guide uses 3.2.4):
+
+[source, bash]
+----
+$ sdk install grails 3.2.4
+----
+
+`sdkman` will prompt you to choose whether to set this version as the default (choose 'yes').
+
+[source, bash]
+----
+$ grails --version
+
+| Grails Version: 3.2.4
+| Groovy Version: 2.4.7
+| JVM Version: 1.8.0_77
+----
+
+NOTE: If you are running Windows, there is a clone project of `sdkman` available that follows the same conventions. You can download it from https://github.com/flofreud/posh-gvm[https://github.com/flofreud/posh-gvm]
+
+
+=== Download from Grails.org (not recommended)
+
+Download the Grails binary package from https://grails.org/download.html[https://grails.org]. Unpack the package in a convenient directory.
+
+[source, bash]
+----
+$ unzip ~/Downloads/grails-3.2.4.zip
+----
+
+Edit your `.bashrc` (most Linux flavors) or `.bash_profile` file with the following environment variables (add these to the end of the file)
+
+Set the `GRAILS_HOME` environment variable to the location where you extracted the zip
+
+[source, bash]
+----
+export GRAILS_HOME=/path/to/grails-3.2.4
+----
+
+On Windows you can create an environment variable under `My Computer/Advanced/Environment Variables`
+
+Now add the Grails `bin` directory to your `PATH` variable:
+
+[source, bash]
+----
+export GRAILS_HOME=/path/to/grails-3.2.4
+export PATH="$PATH:$GRAILS_HOME/bin
+----
+
+Again, on Windows you will need to modify the `Path` environment variable under `My Computer/Advanced/Environment Variables`
+
+You should now be able to type grails -version in the terminal window and verify that Grails has been installed successfully:
+
+[source, bash]
+----
+$ grails --version
+
+| Grails Version: 3.2.4
+| Groovy Version: 2.4.7
+| JVM Version: 1.8.0_77
+----
+
+== Create your App
+
+Creating a Grails app is about as simple as could be - once you have installed Grails, simply run the http://docs.grails.org/latest/ref/Command%20Line/create-app.html[`create-app`] command:
+
+[source, bash]
+----
+$ grails create-app myApp
+----
+
+You can optionally specify a default package for the application:
+
+[source, bash]
+----
+$ grails create-app com.example.myApp
+----
+
+Finally, you can optionally specify a http://docs.grails.org/latest/guide/profiles.html[Profile] for your Grails app. Profiles are available for many common application types, including `rest-api`, `angular`, `react`, and others, and you can even create your own.
+
+To view of a list of what profiles are available, use the http://docs.grails.org/latest/ref/Command%20Line/list-profiles.html[`list-profiles`] command.
+
+[source, bash]
+----
+$ grails list-profiles
+
+| Available Profiles
+--------------------
+* angular - A profile for creating applications using AngularJS
+* rest-api - Profile for REST API applications
+* base - The base profile extended by other profiles
+* angular2 - A profile for creating Grails applications with Angular 2
+* plugin - Profile for plugins designed to work across all profiles
+* profile - A profile for creating new Grails profiles
+* react - A profile for creating Grails applications with a React frontend
+* rest-api-plugin - Profile for REST API plugins
+* web - Profile for Web applications
+* web-plugin - Profile for Plugins designed for Web applications
+* webpack - A profile for creating applications with node-based frontends using webpack
+----
+
+To use a profile, specify its name preceded by the `-profile` flag:
+
+[source, bash]
+----
+grails create-app myApp -profile rest-api
+----
+
+You may optionally specify a package and version (defaults to `org.grails.profiles` and the current version of the profile)
+
+[source, bash]
+----
+grails create-app myApp -profile org.grails.profiles:react:1.0.2
+----

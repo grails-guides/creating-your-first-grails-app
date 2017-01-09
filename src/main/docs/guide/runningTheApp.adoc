@@ -1,0 +1,58 @@
+Now that you've created (or downloaded) your Grails project, it's time to run it and see what Grails has already given you.
+
+If you have a local installation of Grails, you can run the app using the `run-app` command from within your project:
+
+[source, bash]
+----
+$ cd myApp/
+$ grails run-app
+----
+
+However, just as you do not need a Grails installation to create a Grails app (if you download it from the http://start.grails.org[Grails Application Forge], for example), you do not need to have a Grails installation to run the app (or any other Grails commands either. You can use the http://docs.grails.org/latest/guide/introduction.html#whatsNewGrailsWrapper[Grails Wrapper] to run any Grails command from within a Grails project (as of 3.2.3).
+
+[source, bash]
+----
+$ ./grailsw run-app
+----
+
+Finally, because Grails is built upon https://projects.spring.io/spring-boot/[Spring Boot] and https://gradle.org/[Gradle], you can also use Spring Boot commands like `bootRun` to interact with your Grails application.
+
+[source, bash]
+----
+$ ./gradlew bootRun
+----
+
+Once you've run any of those commands, Grails will launch your application using an embedded Tomcat server, and make it available (by default) at `http://localhost:8080`.
+
+[source, bash]
+----
+$ ./grailsw run-app
+
+| Running application...
+Grails application running at http://localhost:8080 in environment: development
+----
+
+If you'd like to change the port number, simply edit the `application.yml` file under `grails-app/conf/`, and add the following line:
+
+[source, yml]
+----
+server:
+    port: 8090
+----
+
+Currently the app simply displays a default index page with some information about the application. The default index page is located under `grails-app/views/index.gsp`.
+
+Go ahead and edit that file, and change some thing on the page, as shown below (line 54):
+
+[source, xml]
+----
+    <div id="content" role="main">
+        <section class="row colset-2-its">
+            <h1>Welcome to My First Grails Project</h1>  <1>
+----
+<1> Change the text of the `<h1>` tag.
+
+Save your changes and refresh the page in the browser. You should see your change on the home page. Grails will auto-reload changes to views, controllers, domain classes and other artefacts when it detects changes, so you don't need to restart the app upon every change.
+
+
+WARNING: Major changes to domain class associations, renaming classes, and other operations that affect the "wiring" of the application may not successfully reload.

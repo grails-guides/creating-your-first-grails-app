@@ -1,0 +1,1 @@
+In this guide you are going to create your first Grails application. You will learn about domain classes, controllers, services, GSPs, and unit & integration tests.  This guide is aimed that developers who are either altogether new to Grails or wanting a refresher course on the framework.
