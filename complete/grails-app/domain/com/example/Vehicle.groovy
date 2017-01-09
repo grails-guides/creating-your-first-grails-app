@@ -4,10 +4,7 @@ class Vehicle {
 
     String name
     Model model
-
-    Make getMake() {
-        model.make
-    }
+    Make make
 
     static constraints = {
         name maxSize: 255

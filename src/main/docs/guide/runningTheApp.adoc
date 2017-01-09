@@ -15,6 +15,16 @@ However, just as you do not need a Grails installation to create a Grails app (i
 $ ./grailsw run-app
 ----
 
+You can also use Grails' http://docs.grails.org/latest/guide/commandLine.html#interactiveMode[Interactive Mode] to run the Grails runtime, from which you can issue any Grails command without waiting for the runtime to spin up for each task. In this guide we will be preferring the Grails wrapper for most commands.
+
+[source, bash]
+----
+$ ./grailsw
+
+| Enter a command name to run. Use TAB for completion:
+grails>run-app      //you can shutdown the app with the stop-app command
+----
+
 Finally, because Grails is built upon https://projects.spring.io/spring-boot/[Spring Boot] and https://gradle.org/[Gradle], you can also use Spring Boot commands like `bootRun` to interact with your Grails application.
 
 [source, bash]
@@ -53,6 +63,5 @@ Go ahead and edit that file, and change some thing on the page, as shown below (
 <1> Change the text of the `<h1>` tag.
 
 Save your changes and refresh the page in the browser. You should see your change on the home page. Grails will auto-reload changes to views, controllers, domain classes and other artefacts when it detects changes, so you don't need to restart the app upon every change.
-
 
 WARNING: Major changes to domain class associations, renaming classes, and other operations that affect the "wiring" of the application may not successfully reload.

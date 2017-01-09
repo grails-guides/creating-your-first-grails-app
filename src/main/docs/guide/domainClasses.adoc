@@ -68,6 +68,8 @@ Browse to `http://localhost:8080/dbconsole` and login. The default username is `
 
 image::{commondir}/guide/images/dbconsole.png[DBConsole]
 
+{commondir}/guide/images/dbconsole.png
+
 NOTE: You can view the JDBC url in `application.yml`, under `environments` `development` `dataSource` `url`
 
 Once you've logged in to the DB Console, you should see your new `VEHICLES` table in the left-hand sidebar. Click the `+` icon to expand the table - you should see a list of columns, including the three `String` fields we just defined, `name`, `make,` and `model`.
@@ -108,34 +110,15 @@ include::{sourceDir}/grails-app/domain/com/example/Make.groovy[]
 include::{sourceDir}/grails-app/domain/com/example/Model.groovy[]
 ----
 
+NOTE: The `belongsTo` property is one of several properties that GORM uses to determine associations between domain classes. Others include `hasMany` and `hasOne`. For more information please see the http://gorm.grails.org/6.0.x/hibernate/manual/#gormAssociation[GORM documentation].
+
 Now, update `Vehicle.groovy` to use the new `Make` and `Model` classes instead of `String`.
 
 [source,groovy]
 .grails-app/domain/com/example/Vehicle.groovy
 ----
-package com.example
-
-class Vehicle {
-
-    String name
-    Model model <1>
-
-    Make getMake() {  <2>
-        model.make
-    }
-
-    static constraints = {
-        name maxSize: 255
-    }
-}
-
+include::{sourceDir}/grails-app/domain/com/example/Vehicle.groovy[]
 ----
-<1> Replace the `String model` with our new `Model` class.
-<2> Replace `String make` with a `getMake` instance method which returns the `Make` property of our `Model`
-
-[NOTE]
-====
-Because `Model` is associated with `Make`, we don't need to persist the `Make` in our `Vehicle` class (and duplicate the data). Instead, we can define a custom "getter" method which returns the `Make` from the `Model` association. Because Groovy allows property (dot) access to getter methods, we can now write the following code:
 
 [source, groovy]
 ----
@@ -145,8 +128,6 @@ if(vehicle) {
     println vehicle.make // e.g, 'Nissan'
 }
 ----
-
-====
 
 Grails (via GORM) will now create three tables in our database, for our three domain classes, and create the necessary associations between the tables. Run the app again and open the DB Console to view the new tables.
 
@@ -204,3 +185,26 @@ environments:
 <2> This assumes you have a local MySQL instance with a database named `myapp`
 
 
+
+== Driving our Domain Model
+
+Right now we don't have any controllers or views set up to play with our domain model. We'll get there shortly, but for now, let's fire up the http://docs.grails.org/latest/ref/Command%20Line/console.html[Grails Console] so we can explore what Grails and GORM have to offer.
+
+If the application is still running, shut it down with either kbd:[Ctrl+C], or (if running Grails in http://docs.grails.org/latest/guide/commandLine.html#interactiveMode[Interactive Mode], the `stop-app` command.
+
+Launch the Grails Console:
+
+[source, bash]
+----
+$ ./grailsw console
+----
+
+The Grails Console application will launch. This application is based on the http://groovy-lang.org/groovyconsole.html[Groovy Console], but has the added benefit that our entire Grails application is up and running in the background, so we can access our domain classes and even persist to the database from the Console.
+
+Try playing with our new domain model from the Console. Here's a simple script to get you started - again, refer to the http://gorm.grails.org/6.0.x/hibernate/manual[GORM documentation] for more details on querying, persistence, configuration and more.
+
+[source,groovy]
+.docs/console.groovy
+----
+include::{sourceDir}/docs/console.groovy[]
+----
