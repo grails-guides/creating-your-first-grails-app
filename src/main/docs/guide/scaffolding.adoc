@@ -1,0 +1,92 @@
+Now that we have a home page, let's create controllers to manage the domain model we created earlier. Create 3 new controllers for each of the domain classes, `Vehicle`, `Make`, and `Model`.
+
+[source, bash]
+----
+$ ./grailsw create-controller com.example.Vehicle
+
+| Created grails-app/controllers/com/example/VehicleController.groovy
+| Created src/test/groovy/com/example/VehicleControllerSpec.groovy
+
+$ ./grailsw create-controller com.example.Make
+
+| Created grails-app/controllers/com/example/MakeController.groovy
+| Created src/test/groovy/com/example/MakeControllerSpec.groovy
+
+$ ./grailsw create-controller com.example.Model
+
+| Created grails-app/controllers/com/example/ModelController.groovy
+| Created src/test/groovy/com/example/ModelControllerSpec.groovy
+----
+
+We'd like to have actions to allow us to create new domain class instances and persist them to the database. In addition, we'd like to have the ability to edit existing instances and even delete them. Normally all this functionality would require a lot of coding, but Grails gives us a headstart with scaffolding.
+
+TIP: Learn more about scaffolding in the http://docs.grails.org/latest/guide/scaffolding.html[Grails documentation].
+
+To use scaffolding, edit the three controllers we just created, and replace the default `index` action with a `scaffolding` property as shown in the examples below.
+
+[source, groovy]
+.grails-app/controllers/com/example/VehicleController.groovy
+----
+package com.example
+
+class VehicleController {
+
+    static scaffold = Vehicle
+}
+----
+
+[source, groovy]
+.grails-app/controllers/com/example/MakeControler.groovy
+----
+package com.example
+
+class MakeControler {
+
+    static scaffold = Make
+}
+----
+
+[source, groovy]
+.grails-app/controllers/com/example/ModelController.groovy
+----
+package com.example
+
+class ModelController {
+
+    static scaffold = Model
+}
+----
+
+With the `scaffold` property set, Grails will now generate all necessary CRUD (Create, Read, Update, Delete) actions for the respective domain classes. It will also dynamically generate views with list, create, show and edit pages using our domain properties and associations. This can give you a big leg up when putting together the beginnings of an application.
+
+Restart the app, and browse to `http://localhost:8080/vehicle` - you should see a list of the `Vehicle` instances we added to our `BootStrap`. Try out the new views and create, view, edit and delete some instances. You can also do the same with the `Model` and `Make` controllers.
+
+=== Generating the Scaffolding
+
+Dynamic scaffolding is powerful and sometimes will provide all the functionality you need (especially for an administrative site where data access is more important than presentation). But it's quite likely that you will feel the need to customize the generated views and controllers, either to change their appearance or to add custom logic and functionality. Grails anticipates this need and provides a set of `generate` commands that can generate the controllers and/or views that you just saw, allowing you to modify them to suite your needs.
+
+To generate the views (and continue to use the dynamic scaffolding):
+
+[source, bash]
+----
+$ ./grailsw generate-views com.example.Vehicle
+----
+
+To generate the controller (and continue to use the dynamic GSP views):
+
+[source, bash]
+----
+$ ./grailsw generate-controller com.example.Vehicle
+----
+
+To both views and controllers (bypassing all dynamic generation):
+
+[source, bash]
+----
+$ ./grailsw generate-all com.example.Vehicle
+----
+
+The generated controller will be placed under `grails-app/controller`, and the generated views will be placed under `grails-app/views/vehicle`.
+
+TIP: To override existing files, use th `-force` flag along with the `generate-*` command: `./grailsw generate-all com.example.Vehicle -force`
+

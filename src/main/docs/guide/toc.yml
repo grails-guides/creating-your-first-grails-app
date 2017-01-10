@@ -8,10 +8,22 @@ runningTheApp:
   title: Running the App
 domainClasses:
   title: Domain Classes
+  creatingDomainClass: Creating a Domain Class
+  databaseConsole: DB Console
+  expandDomain: Expanding the Domain Model
+  bootstrap: Bootstrapping Data
+  datasource: Datasources
+  console: Grails Console
 controllers:
   title: Controllers
+
+  urlMappings: URL Mappings
+  scaffolding: Scaffolding
 views:
   title: Views
+  gsp: GSP
+  customTags: Custom GSP tags
+  assetPipeline: Asset Pipeline
 services:
   title: Services
 testing:
