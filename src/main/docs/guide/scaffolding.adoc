@@ -61,7 +61,7 @@ With the `scaffold` property set, Grails will now generate all necessary CRUD (C
 
 Restart the app, and browse to `http://localhost:8080/vehicle` - you should see a list of the `Vehicle` instances we added to our `BootStrap`. Try out the new views and create, view, edit and delete some instances. You can also do the same with the `Model` and `Make` controllers.
 
-=== Generating the Scaffolding
+== Generating the Scaffolding
 
 Dynamic scaffolding is powerful and sometimes will provide all the functionality you need (especially for an administrative site where data access is more important than presentation). But it's quite likely that you will feel the need to customize the generated views and controllers, either to change their appearance or to add custom logic and functionality. Grails anticipates this need and provides a set of `generate` commands that can generate the controllers and/or views that you just saw, allowing you to modify them to suite your needs.
 
@@ -114,16 +114,16 @@ class VehicleController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Vehicle.list(params), model:[vehicleCount: Vehicle.count()] // <2>
+        params.max = Math.min(max ?: 10, 100) // <2>
+        respond Vehicle.list(params), model:[vehicleCount: Vehicle.count()] // <3>
     }
 
     def show(Vehicle vehicle) {
-        respond vehicle //<2>
+        respond vehicle //<3>
     }
 
     def create() {
-        respond new Vehicle(params) //<2>
+        respond new Vehicle(params) //<3>
     }
 
     @Transactional //<1>
@@ -136,24 +136,24 @@ class VehicleController {
 
         if (vehicle.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond vehicle.errors, view:'create'  //<2>
+            respond vehicle.errors, view:'create'  //<3>
             return
         }
 
         vehicle.save flush:true
 
-        request.withFormat {  //<3>
+        request.withFormat {  //<4>
             form multipartForm {
-                //<4>
+                //<5>
                 flash.message = message(code: 'default.created.message', args: [message(code: 'vehicle.label', default: 'Vehicle'), vehicle.id])
                 redirect vehicle
             }
-            '*' { respond vehicle, [status: CREATED] } //<2>
+            '*' { respond vehicle, [status: CREATED] } //<3>
         }
     }
 
     def edit(Vehicle vehicle) {
-        respond vehicle //<2>
+        respond vehicle //<3>
     }
 
     @Transactional //<1>
@@ -166,7 +166,7 @@ class VehicleController {
 
         if (vehicle.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond vehicle.errors, view:'edit' //<2>
+            respond vehicle.errors, view:'edit' //<3>
             return
         }
 
@@ -174,11 +174,11 @@ class VehicleController {
 
         request.withFormat {
             form multipartForm {
-                //<4>
+                //<5>
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'vehicle.label', default: 'Vehicle'), vehicle.id])
-                redirect vehicle <5>
+                redirect vehicle <6>
             }
-            '*'{ respond vehicle, [status: OK] } //<2>
+            '*'{ respond vehicle, [status: OK] } //<3>
         }
     }
 
@@ -195,31 +195,32 @@ class VehicleController {
 
         request.withFormat {
             form multipartForm {
-                //<4>
+                //<5>
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'vehicle.label', default: 'Vehicle'), vehicle.id])
-                redirect action:"index", method:"GET" //<5>
+                redirect action:"index", method:"GET" //<6>
             }
-            '*'{ render status: NO_CONTENT } //<6>
+            '*'{ render status: NO_CONTENT } //<7>
         }
     }
 
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                //<4>
+                //<5>
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'vehicle.label', default: 'Vehicle'), params.id])
-                redirect action: "index", method: "GET" //<5>
+                redirect action: "index", method: "GET" //<6>
             }
-            '*'{ render status: NOT_FOUND }  //<6>
+            '*'{ render status: NOT_FOUND }  //<7>
         }
     }
 }
 ----
 <1> The http://docs.grails.org/latest/api/grails/transaction/Transactional.html[`@Transactional`] annotation configures the transactional behavior of the controller or method. Transactions are used to manage persistence and other complicated operations that should be completed together (and potentially rolled-back if any one of the steps fails).  For more information on transactions, see the http://docs.grails.org/latest/guide/single.html#declarativeTransactions[Grails documentation]
-<2> The `respond` method takes an object to return to the requestor, using https://docs.grails.org/latest/guide/theWebLayer.html#contentNegotiation[content negotiation] to choose the correct type (for example, a request's `Accept` header might specify JSON or XML). `respond` also can accept a map of arguments, such as `model` (which defines the way the data is loaded on a page). For more on how to use the `respond` method, see the https://docs.grails.org/latest/ref/Controllers/respond.html[Grails documentation].
-<3> `request` is available on all controllers, and is an instance of the Servlet API’s https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletRequest.html[HttpServletRequest] class. You can access request headers, store properties in the request scope, and get information about the requestor using this object. For more see the https://docs.grails.org/latest/ref/Controllers/request.html[Grails documentation on `request`].
-<4> `flash` is a map that stores objects within the session for the *next* request, automatically clearing them after that next request completes. This is useful for passing error messages or other data that you want the next request to access. For more, see the https://docs.grails.org/latest/ref/Controllers/flash.html[Grails documentation on `flash`].
-<5> The `redirect` method is a simple one - it allows the action to redirect the request to another action, controller, or a URI. You can also pass along parameters with the redirect. See the https://docs.grails.org/latest/ref/Controllers/redirect.html[Grails documentation on `redirect`] for more.
-<6> The `render` method is a less sophisticated version of `respond` - it doesn't perform content negotiation, so you have to specify exactly what you want to render. You can render plain text, a view or template, an HTTP response code, or any object that has a String representation. See the https://docs.grails.org/latest/ref/Controllers/render.html[Grails documentation].
+<2> The `params` object is available to all controllers, and contains a map of any URL parameters on the request. You can refer to any parameter by name to retrieve the value: `params.myCustomParameter` will match this URL parameter: `[url]?myCustomParameter=hello`. See the https://docs.grails.org/latest/ref/Controllers/params.html[Grails documentation] for more detail.
+<3> The `respond` method takes an object to return to the requestor, using https://docs.grails.org/latest/guide/theWebLayer.html#contentNegotiation[content negotiation] to choose the correct type (for example, a request's `Accept` header might specify JSON or XML). `respond` also can accept a map of arguments, such as `model` (which defines the way the data is loaded on a page). For more on how to use the `respond` method, see the https://docs.grails.org/latest/ref/Controllers/respond.html[Grails documentation].
+<4> `request` is available on all controllers, and is an instance of the Servlet API’s https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletRequest.html[HttpServletRequest] class. You can access request headers, store properties in the request scope, and get information about the requestor using this object. For more see the https://docs.grails.org/latest/ref/Controllers/request.html[Grails documentation on `request`].
+<5> `flash` is a map that stores objects within the session for the *next* request, automatically clearing them after that next request completes. This is useful for passing error messages or other data that you want the next request to access. For more, see the https://docs.grails.org/latest/ref/Controllers/flash.html[Grails documentation on `flash`].
+<6> The `redirect` method is a simple one - it allows the action to redirect the request to another action, controller, or a URI. You can also pass along parameters with the redirect. See the https://docs.grails.org/latest/ref/Controllers/redirect.html[Grails documentation on `redirect`] for more.
+<7> The `render` method is a less sophisticated version of `respond` - it doesn't perform content negotiation, so you have to specify exactly what you want to render. You can render plain text, a view or template, an HTTP response code, or any object that has a String representation. See the https://docs.grails.org/latest/ref/Controllers/render.html[Grails documentation].
 
 That's a lot of code! Generating and modifying a scaffold controller is a good learning exercise, so feel free to experiment and modify this code - you can always revert back to the version in the `completed` project of this guide.

@@ -1,0 +1,1 @@
+GSP pages have access to a rich set of tags. We've seen a few in action already. You can get much more detail on the available GSP tags (including how to define your own custom tags) from the Grails documentation.

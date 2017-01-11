@@ -38,24 +38,21 @@ Edit `grails-app/views/home/index.gsp`:
 <head>
     <meta name="layout" content="main"/>
     <title>Home Page</title>
-
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 </head>
 <body>
 
 <div id="content" role="main">
     <section class="row colset-2-its">
         <h1>Welcome ${name}!</h1> //<1>
-        <g:if test="${flash.message}"> //<2>
-            <div class="message" role="status">${flash.message}</div>
-        </g:if>
+
+        <h4>${flash.message}</h4>  //<2>
 
         <p>There are ${vehicleTotal} vehicles in the database.</p> //<1>
 
-        <g:form action="updateName" style="margin: 0 auto; width:320px"> //<3>
-            <g:textField name="name" value="" />
-            <g:submitButton name="Update name" />
-        </g:form>
+        <form action="/home/updateName" method="post" style="margin: 0 auto; width:320px"> //<3>
+            <input type="text" name="name" value="" id="name">
+            <input type="submit" name="Update name" value="Update name" id="Update name">
+        </form>
 
     </section>
 </div>
@@ -64,8 +61,8 @@ Edit `grails-app/views/home/index.gsp`:
 </html>
 ----
 <1> We can refer to any values in our "model" by name in a GSP page, using Groovy String Expressions `${name}` `${vehicleTotal}`
-<2> We're using a GSP tag `<g:if>` to check if we have a `flash.message` to display (more on GSP tags in the next section), and we display it if so.
-<3> Again, we're using GSP tags, but essentially this is a plain HTML form that will submit the `name` text field to the `updateName` action we just created.
+<2> Here we're accessing our `flash.message` property - if it's null then nothing will render here.
+<3> This is a plain HTML form that will submit the `name` text field to the `updateName` action we just created.
 
 Run the app and you should see our new message in the `<h1>` header: "Welcome User!", as well as the current total of `Vehicle` instances in the database.
 
