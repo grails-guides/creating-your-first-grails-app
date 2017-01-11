@@ -17,6 +17,12 @@
 
         <p>There are ${vehicleTotal} vehicles in the database.</p>
 
+        <ul>
+            <g:each in="${vehicleList}" var="vehicle">
+                <li>${vehicle.name}</li>
+            </g:each>
+        </ul>
+
         <g:form action="updateName" style="margin: 0 auto; width:320px">
             <g:textField name="name" value="" />
             <g:submitButton name="Update name" />

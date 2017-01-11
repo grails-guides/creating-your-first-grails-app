@@ -60,7 +60,10 @@ Edit your new layout. We'll be copying the existing `main.gsp` as a start, but w
 ----
 include::{sourceDir}/grails-app/views/layouts/public.gsp[]
 ----
-TIP: Feel free to provide your own `logo.png` image, or use the one from the `completed` project (or download at this link). Place the image in the `grails-app/assets/images/` directory, and the layout should render it instead of the Grails logo.
+
+The key points of this layout are the `<g:layoutBody>` and `<g:layoutHead>` tags. These tags are substituted by SiteMesh for the `<head>` and `<body>` sections of any GSP page that uses the layout.
+
+TIP: Feel free to provide your own `logo.png` image, or use the one from the `completed` project (or https://github.com/grails-guides/creating-a-grails-application/blob/f226d367668b73799378ac91a5a314eae7fa5f85/complete/grails-app/assets/images/logo.png[download at this link]). Place the image in the `grails-app/assets/images/` directory, and the layout should render it instead of the Grails logo.
 
 TIP: Don't worry about the `<asset>` tags in the new layout just yet - we'll be covering those shortly.
 
@@ -76,7 +79,7 @@ Now edit the `home/index.gsp` view to use the new `public` layout.
 ----
 <1> Change "main" to "public"
 
-Refresh the page (or restart the app) and you should see
+Refresh the page (or restart the app) and you should see the new layout in action. Feel free to modify the `public.gsp` layout further if you wish.
 
 
 

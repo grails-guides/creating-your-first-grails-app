@@ -3,7 +3,7 @@ package com.example
 class HomeController {
 
     def index() {
-        respond([name: session.name ?: 'User', vehicleTotal: Vehicle.count()])
+        respond([name: session.name ?: 'User', vehicleList: Vehicle.list(), vehicleTotal: Vehicle.count()])
     }
 
     def updateName(String name) {
