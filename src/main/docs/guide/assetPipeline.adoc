@@ -50,4 +50,4 @@ Edit `grails-app/views/home/index.gsp`
 </head>
 ----
 
-Refresh the page, and open your browser's developer console. You should see the string "jQuery 3.1.1 loaded!" in the console logs.
+Refresh the page, and open your browser's developer console. You should see the string `jQuery 3.1.1 loaded!` in the console logs.
