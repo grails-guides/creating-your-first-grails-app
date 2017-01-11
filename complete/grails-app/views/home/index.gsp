@@ -5,6 +5,16 @@
     <title>Home Page</title>
 
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+
+    <asset:javascript src="jquery-3.1.1.js" />
+
+    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        console.log( "jQuery 3.1.1 loaded!" );
+      });
+    </script>
 </head>
 <body>
 
