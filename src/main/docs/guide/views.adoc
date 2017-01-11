@@ -1,0 +1,1 @@
+Views are the third component of the MVC pattern. Views are responsible for presenting data to the user (which might be a browser page, an API endpoint, or some other sort of consumer).

@@ -16,13 +16,12 @@ domainClasses:
   console: Grails Console
 controllers:
   title: Controllers
-
   urlMappings: URL Mappings
   scaffolding: Scaffolding
+  respond: Render a response
 views:
   title: Views
   gsp: GSP
-  customTags: Custom GSP tags
   assetPipeline: Asset Pipeline
 services:
   title: Services
