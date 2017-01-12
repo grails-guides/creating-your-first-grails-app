@@ -1,4 +1,4 @@
-Let's modify our `HomeController` to render some custom content on our home page. Edit `grails-app/controller/com/example/HomeController.groovy`.
+Let's modify our `HomeController` to render some custom content on our home page. Edit `grails-app/controllers/com/example/HomeController.groovy`.
 
 [source, groovy]
 .grails-app/controllers/com/example/HomeController.groovy
@@ -95,14 +95,7 @@ You can request difference content types in the browser as well, thanks to Grail
 [source,groovy]
 .grails-app/controllers/creating/a/grails/application/UrlMappings.groovy
 ----
-//..
-    static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
-//..
+include::{sourceDir}/grails-app/controllers/creating/a/grails/application/UrlMappings.groovy[lines="6..10"]
 ----
 
 Note the `(.$format)?` token in the mapping. This will match a suffix on our URL such as `.json` or `.xml`. Test this out in your browser.

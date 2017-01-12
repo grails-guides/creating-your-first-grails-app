@@ -1,7 +1,7 @@
 <html>
 <html>
 <head>
-    <meta name="layout" content="public"/>
+    <meta name="layout" content="public"/> <!--1-->
     <title>Home Page</title>
 
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />

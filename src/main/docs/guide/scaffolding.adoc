@@ -97,11 +97,11 @@ Let's generate the controller and views for `Vehicle` and take a look at the res
 $ ./grailsw generate-all com.example.Vehicle -force
 ----
 
-Open the `VehicleController.groovy` file at `grails-app/controller/com/example/`.
+Open the `VehicleController.groovy` file at `grails-app/controllers/com/example/`.
 
 
 [source, groovy]
-.grails-app/controller/com/example/VehicleController.groovy
+.grails-app/controllers/com/example/VehicleController.groovy
 ----
 package com.example
 

@@ -72,10 +72,7 @@ Now edit the `home/index.gsp` view to use the new `public` layout.
 [source, xml]
 .grails-app/views/home/index.gsp
 ----
-<html>
-<html>
-<head>
-    <meta name="layout" content="public"/> //<1>
+include::{sourceDir}/grails-app/views/home/index.gsp[lines="1..4"]
 ----
 <1> Change "main" to "public"
 

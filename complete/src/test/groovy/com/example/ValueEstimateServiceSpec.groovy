@@ -8,7 +8,7 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 
-@Mock([Make, Model, Vehicle])
+@Mock([Make, Model, Vehicle]) // <1>
 @TestFor(ValueEstimateService)
 class ValueEstimateServiceSpec extends Specification {
 

@@ -16,7 +16,7 @@
         </div>
         <div id="show-vehicle" class="content scaffold-show" role="main">
             <h1><g:message code="default.show.label" args="[entityName]" /></h1>
-            <h1>Estimated Value: <g:formatNumber number="${estimatedValue}" type="currency" currencyCode="USD" /></h1>
+            <h1>Estimated Value: <g:formatNumber number="${estimatedValue}" type="currency" currencyCode="USD" /></h1>  <!--1-->
 
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>

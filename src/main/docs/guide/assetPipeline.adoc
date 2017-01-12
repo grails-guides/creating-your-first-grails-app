@@ -31,23 +31,7 @@ Edit `grails-app/views/home/index.gsp`
 [source, xml]
 .grails-app/views/home/index.gsp
 ----
-<html>
-<html>
-<head>
-    <meta name="layout" content="public"/>
-    <title>Home Page</title>
-
-    <asset:javascript src="jquery-3.1.1.js" />
-
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
-
-    <script type="text/javascript">
-        $( document ).ready(function() {
-            console.log( "jQuery 3.1.1 loaded!" );
-        });
-    </script>
-
-</head>
+include::{sourceDir}/grails-app/views/home/index.gsp[indent=0,lines="1..18"]
 ----
 
 Refresh the page, and open your browser's developer console. You should see the string `jQuery 3.1.1 loaded!` in the console logs.
