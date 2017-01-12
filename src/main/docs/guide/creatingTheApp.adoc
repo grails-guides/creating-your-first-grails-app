@@ -137,3 +137,5 @@ You may optionally specify a package and version (defaults to `org.grails.profil
 ----
 grails create-app myApp -profile org.grails.profiles:react:1.0.2
 ----
+
+When you create an app without `-profile` the default is `web` 
