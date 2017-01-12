@@ -25,7 +25,7 @@ $ ./grailsw
 grails>run-app      //you can shutdown the app with the stop-app command
 ----
 
-Finally, because Grails is built upon https://projects.spring.io/spring-boot/[Spring Boot] and https://gradle.org/[Gradle], you can also use Spring Boot commands like `bootRun` to interact with your Grails application.
+Finally, because Grails is built upon https://projects.spring.io/spring-boot/[Spring Boot] and https://gradle.org/[Gradle], you can also use Spring Boot commands like `bootRun` to interact with your Grails application. Like for Grails you do not have to download and install Gradle, this will happen automatically using the the Gradle Wrapper (`gradlew`)
 
 [source, bash]
 ----
