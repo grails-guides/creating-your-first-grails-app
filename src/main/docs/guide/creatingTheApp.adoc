@@ -44,7 +44,9 @@ $ grails --version
 NOTE: If you are running Windows, there is a clone project of `sdkman` available that follows the same conventions. You can download it from https://github.com/flofreud/posh-gvm[https://github.com/flofreud/posh-gvm]
 
 
-=== Download from Grails.org (not recommended)
+=== Download from Grails.org 
+
+I recommend that you do not use this way of installing Grails, but it is here to describe how to do it, if the above fails.
 
 Download the Grails binary package from https://grails.org/download.html[https://grails.org]. Unpack the package in a convenient directory.
 
