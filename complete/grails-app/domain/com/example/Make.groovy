@@ -6,4 +6,8 @@ class Make {
 
     static constraints = {
     }
+
+    String toString() {
+        name
+    }
 }

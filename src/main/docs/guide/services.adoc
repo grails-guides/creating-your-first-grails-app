@@ -1,6 +1,6 @@
 Grails provides a "service layer", which are classes that encapsulate business logic and are wired (using https://en.wikipedia.org/wiki/Dependency_injection[dependency injection]) into the application context, so that any controller can inject and use them. Services are the preferred vehicle for most application logic, *not* controllers.
 
-If this seems confusing, think of it this way: controllers are request-bound, meaning they are instantiated for a particular request, and are garbage-collected after the request is complete. Controllers are intended to respond to the request and return a response. Services are singletons (by default) and can be reused across many controllers (as well as in domain classes and from other services). Services are more versatile and can help you keep your controllers clean and prevent duplication of business logic.
+If this seems confusing, think of it this way: controllers are request-bound, meaning they are instantiated for a particular request, and are garbage-collected after the request is complete. Controllers are intended to respond to the request and return a response. Services are singletons (by default) and can be reused across many controllers (as well as in domain classes and from other services). Services are more versatile and can help you keep your controllers clean and prevent duplication of business logic. It is often easier to write unit tests against service methods than against controller actions, as well.
 
 TIP: Controllers are for "web logic", services for "business logic"
 
@@ -41,15 +41,61 @@ Grails has provided a `serviceMethod` stub as an example. Delete it and replace 
 [source,groovy]
 .grails-app/services/com/exmaple/ValueEstimateService.groovy
 ----
+include::{sourceDir}/grails-app/services/com/exmaple/ValueEstimateService.groovy[]
+----
+
+Obviously this method of estimating a vehicle's value is pretty contrived! In reality you would likely call a third-party webservice to get a valuation, or perhaps run a query against your own database.  However, the point of this example is to show the sort of "business logic" that can be placed in services, rather than being calculated within a controller or view.
+
+Now, let's use our new service.
+
+Edit `grails-app/controller/com/example/VehicleController.groovy` (the scaffolded controller we generated earlier), and add the property shown below:
+
+
+[source,groovy]
+.grails-app/controller/com/example/VehicleController.groovy
+----
 package com.example
 
+import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional
-class ValueEstimateService {
+@Transactional(readOnly = true)
+class VehicleController {
 
-    def serviceMethod() {
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    }
-}
+    def valueEstimateService //<1>
+
+    <!-- ... -->
 ----
+<1> By simply defining a property in our controller with the same name as our service class, Grails will inject a reference to the service for us.
+
+
+Now (still editing `VehicleController.groovy`), modify the `show` action as seen below:
+
+[source,groovy]
+.grails-app/controller/com/example/VehicleController.groovy
+----
+    def show(Vehicle vehicle) {
+        respond vehicle, model: [estimatedValue: valueEstimateService.getEstimate(vehicle)]
+    }
+----
+
+We've added new property to the `model`, called `estimatedValue`. The value of this property is the result of calling our service method, `getEstimate`, to which we pass the `vehicle` property we are about to render.
+
+Now, on the `show` page, we can access the `estimatedValue` property and display it on the page. Edit `grails-app/views/vehicle/show.gsp` as shown below:
+
+[source,groovy]
+.grails-app/view/vehicle/show.gsp
+----
+<!DOCTYPE html>
+<html>
+<! -- ... -->
+
+        <div id="show-vehicle" class="content scaffold-show" role="main">
+            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <h1>Estimated Value: <g:formatNumber number="${estimatedValue}" type="currency" currencyCode="USD" /></h1> //<1>
+----
+<1> `<g:formatNumber>` is another GSP tag which provides many useful options for rendering numbers, including currency and decimal precision. See the http://docs.grails.org/latest/ref/Tags/formatNumber.html[Grails documentation] for more.
+
+Restart the application and browse to the show page for a `Vehicle`, such as `http://localhost:8080/vehicle/show/1`. You should see the "Estimated Value" on the page
