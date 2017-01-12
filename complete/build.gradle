@@ -50,7 +50,7 @@ dependencies {
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.11.6"
     runtime "com.h2database:h2"
     //uncomment to use MySQL
-    runtime 'mysql:mysql-connector-java:5.1.40'
+    //runtime 'mysql:mysql-connector-java:5.1.40'
 
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails.plugins:geb"

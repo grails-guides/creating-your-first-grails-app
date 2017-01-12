@@ -21,7 +21,7 @@ $ ./grailsw create-service com.example.ValueEstimateService
 Edit `grails-app/services/com/example/ValueEstimateService.groovy`
 
 [source,groovy]
-.grails-app/services/com/exmaple/ValueEstimateService.groovy
+.grails-app/services/com/example/ValueEstimateService.groovy
 ----
 package com.example
 
@@ -39,9 +39,9 @@ class ValueEstimateService {
 Grails has provided a `serviceMethod` stub as an example. Delete it and replace it with the following content:
 
 [source,groovy]
-.grails-app/services/com/exmaple/ValueEstimateService.groovy
+.grails-app/services/com/example/ValueEstimateService.groovy
 ----
-include::{sourceDir}/grails-app/services/com/exmaple/ValueEstimateService.groovy[]
+include::{sourceDir}/grails-app/services/com/example/ValueEstimateService.groovy[]
 ----
 
 Obviously this method of estimating a vehicle's value is pretty contrived! In reality you would likely call a third-party webservice to get a valuation, or perhaps run a query against your own database.  However, the point of this example is to show the sort of "business logic" that can be placed in services, rather than being calculated within a controller or view.
