@@ -1,5 +1,7 @@
 Controllers are where much of the action happens in most Grails applications. Much of what happens in a controller is very specific to your application, so this section will focus on the basics of creating a controller and defining actions.
 
+TIP: While not part of the "MVC" triad, Grails also provides support for http://docs.grails.org/latest/guide/single.html#services[services]. In a Grails application of any complexity, it is considered best practice to keep core application logic in services. We'll get to services later on in this guide.
+
 Following the convention over configuration principle, Grails will configure any Groovy classes under `grails-app/controller/` as controllers, without any additional configuration. You can create the Groovy class yourself, or use the `create-controller` command to generate the controller and an associated test spec.
 
 [source, bash]

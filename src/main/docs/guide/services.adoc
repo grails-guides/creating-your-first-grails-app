@@ -1,0 +1,55 @@
+Grails provides a "service layer", which are classes that encapsulate business logic and are wired (using https://en.wikipedia.org/wiki/Dependency_injection[dependency injection]) into the application context, so that any controller can inject and use them. Services are the preferred vehicle for most application logic, *not* controllers.
+
+If this seems confusing, think of it this way: controllers are request-bound, meaning they are instantiated for a particular request, and are garbage-collected after the request is complete. Controllers are intended to respond to the request and return a response. Services are singletons (by default) and can be reused across many controllers (as well as in domain classes and from other services). Services are more versatile and can help you keep your controllers clean and prevent duplication of business logic.
+
+TIP: Controllers are for "web logic", services for "business logic"
+
+Again by convention, Grails will configure any Groovy classes within the `grails-app/services` directory as services. Services will be "wired" as https://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html[Spring beans] in the Grails application context, which means you can refer to them simply by name from any other Spring bean (including controllers and domain classes).
+
+Let's add a feature to generate an estimated value for `Vehicle`, based on the make, model and year. We'll put this logic in a service and call it from our application code.
+
+Create a new service using the `create-service` Grails command:
+
+[source, bash]
+----
+$ ./grailsw create-service com.example.ValueEstimateService
+
+| Created grails-app/services/com/example/ValueEstimateService.groovy
+| Created src/test/groovy/com/example/ValueEstimateServiceSpec.groovy
+----
+
+Edit `grails-app/services/com/example/ValueEstimateService.groovy`
+
+[source,groovy]
+.grails-app/services/com/exmaple/ValueEstimateService.groovy
+----
+package com.example
+
+import grails.transaction.Transactional
+
+@Transactional
+class ValueEstimateService {
+
+    def serviceMethod() {
+
+    }
+}
+----
+
+Grails has provided a `serviceMethod` stub as an example. Delete it and replace it with the following content:
+
+[source,groovy]
+.grails-app/services/com/exmaple/ValueEstimateService.groovy
+----
+package com.example
+
+import grails.transaction.Transactional
+
+@Transactional
+class ValueEstimateService {
+
+    def serviceMethod() {
+
+    }
+}
+----

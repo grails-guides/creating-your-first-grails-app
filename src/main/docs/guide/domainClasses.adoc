@@ -2,7 +2,7 @@ Grails is an https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
 
 1. Model - code that defines and manages the data
 2. View - code that manages the presentation of data (e.g, HTML page)
-3. Controller - code that defines the business logic of the application, and manages the transfer of data between the model and the view
+3. Controller - code that defines the logic of the web application, and manages the communication between the model and the view. Controllers respond to requests, obtain data from the model, and pass it along to the view.
 
 Typically an object-oriented MVC framework requires the developer to configure which classes correspond to each of the three categories above. However, Grails goes farther than most frameworks by following a https://en.wikipedia.org/wiki/Convention_over_configuration["Convention over Configuration"] approach to development. This means that for many artefact types in Grails (controllers, views, etc), you simply create a file in a particular directory in your project, and Grails will automatically wire it into your application without any additional configuration on your part.
 
