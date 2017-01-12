@@ -3,7 +3,9 @@ gettingStarted:
   requirements: What you will need
   howto: How to complete the guide
 creatingTheApp:
-  title: Creating your App
+  title: Creating your Grails App
+  installing: Installing Grails
+  createApp: Create the App
 runningTheApp:
   title: Running the App
 domainClasses:
