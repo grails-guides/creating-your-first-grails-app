@@ -68,7 +68,7 @@ Try running the test, just to confirm it fails:
 $ /grailsw test-app com.example.ValueEstimateServiceSpec
 
 ...
-> There were failing tests. See the report at: file:///Users/dev/projects/creating-a-grails-application/complete/build/reports/tests/test/index.html
+> There were failing tests. See the report at: file:///Users/dev/projects/creatung-your-first-grails-app/complete/build/reports/tests/test/index.html
 
 BUILD FAILED
 
