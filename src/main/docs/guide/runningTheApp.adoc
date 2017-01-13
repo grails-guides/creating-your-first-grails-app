@@ -66,6 +66,16 @@ server:
     port: 8090
 ----
 
+You can supply the port number directly in the command invocation:
+
+[source, bash]
+----
+$ ./grailsw run-app --port=8090
+
+| Running application...
+Grails application running at http://localhost:8090 in environment: development
+----
+
 Currently the app simply displays a default index page with some information about the application. The default index page is located under `grails-app/views/index.gsp`.
 
 Go ahead and edit that file, and change some thing on the page, as shown below (line 54):
