@@ -1,10 +1,11 @@
-gettingStarted: 
+gettingStarted:
   title: Getting Started
   requirements: What you will need
   howto: How to complete the guide
 creatingTheApp:
   title: Creating your Grails App
   installing: Installing Grails
+  grailsApplicationForge: Grails Application Forge
   createApp: Create the App
 runningTheApp:
   title: Running the App
