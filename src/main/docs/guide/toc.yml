@@ -32,6 +32,8 @@ views:
   title: Views
   viewsResolution: Views Resolution
   gsp: GSP
+  gspIteration: GSP Tags Iteration
+  gspLinks: GSP Tags Links
   assetPipeline: Asset Pipeline
 services:
   title: Services
