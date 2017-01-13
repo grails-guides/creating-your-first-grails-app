@@ -7,6 +7,7 @@ creatingTheApp:
   installing: Installing Grails
   grailsApplicationForge: Grails Application Forge
   createApp: Create the App
+  applicationProfile: Application Profile
 runningTheApp:
   title: Running the App
 domainClasses:
