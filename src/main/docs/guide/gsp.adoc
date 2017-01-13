@@ -57,50 +57,10 @@ Let's take a closer look at `<g:if>`.
     </g:if>
 ----
 
-GSP tags can optionally accept attributes, such as `test` in this example. Different tags require different types of attributes, but typically you will end up passing a Groovy Expression like in this example. Anything Groovy code between the `${` and `}` will be evaluated (on the server) and the result will be substituted on the rendered page.
+GSP tags can optionally accept attributes, such as `test` in this example. Different tags require different types of attributes, but typically you will end up passing a Groovy Expression like in this example. Any Groovy code between the `${` and `}` will be evaluated (on the server) and the result will be substituted on the rendered page.
 
 TIP: You can use Groovy Expressions anywhere on the GSP page, not just in tags. See the `${flash.message}` in our `index.gsp` page.
 
 Other tag attributes might accept plain strings or numbers. E.g, `<g:form action="updateName">`
 
 A GSP tag can also optionally include a body. In the case of `<g:if>`, the body will only be rendered if the `test` expression evaluates to true (following the http://docs.groovy-lang.org/latest/html/documentation/#Groovy-Truth[Groovy Truth] convention). Other GSP tags (like `<g:form>`) simply include the body within the resulting HTML output.
-
-== Iteration
-
-There are GSP tags for iteration as well - a very useful one is `<g:each>`. Let's try it out:
-
-[source,xml]
-.grails-app/views/home/index.gsp
-----
-<%@ page import="com.example.Vehicle" %> //<1>
-<html>
-<!-- ... -->
-        <p>There are ${vehicleTotal} vehicles in the database.</p>
-
-        <ul>
-            <g:each in="${Vehicle.list()}" var="vehicle">
-                <li>
-                    <! -- ... -->
-                </li>
-            </g:each>
-        </ul>
-
-<!-- ... -->
-----
-<1> This is a JSP-style expression that allows executing arbitrary Groovy code (without rendering a result). We're using it here to import our `Vehicle` class. This is *highly* discouraged - we'll explain why shortly.
-
-The `<g:each>` tag iterates through a collection of objects, provided by the `in` attribute. `var` sets the name for each object in the collection. Grails will iterate through the collection (in this case, the list of `Vehicles` returned by `Vehicle.list()`) and render the body of the `<g:each>` tag for every item.
-
-IMPORTANT: This sort of code is a *bad idea* - we are accessing our domain model (`Vehicle`) directly from our view, which tightly couples two separate parts of the application, and in general leads to very messy code. The better way to accomplish this feature is to get the `Vehicle` list in the `HomeController.index` action, and add the list to our model object (the one being passed to `respond`). Then we could refer to the list in the same way that we access `name` and `vehicleTotal`. Go ahead and change the controller and view to use this better approach - the completed project has this change already made if you need help.
-
-== Links
-
-Let's take a look at one more common GPS tag: `<g:link>`
-
-[source,xml]
-.grails-app/views/home/index.gsp
-----
-include::{sourceDir}/grails-app/views/home/index.gsp[indent=0,lines="34..36"]
-----
-
-`<g:link>` renders an HTML `<a>` tag, but it has the advantage in that it allows you to specify your link target following Grails conventions, such as this example (using the `controller`, `action` and `id` attributes). `<g:link>` is also smart enough to follow our URL mappings, so if we change the URL mapping for `vehicle/show`, the `<g:link>` tag will still render the correct URL. There's many more attributes supported by `<g:link>` - see the http://docs.grails.org/latest/ref/Tags/link.html[Grails documentation] for more.
