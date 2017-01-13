@@ -35,6 +35,7 @@ views:
   gspIteration: GSP Tags Iteration
   gspLinks: GSP Tags Links
   assetPipeline: Asset Pipeline
+  addJavascriptAsset: Add Javascript Asset
 services:
   title: Services
 testing:
