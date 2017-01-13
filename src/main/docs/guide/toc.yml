@@ -11,6 +11,7 @@ creatingTheApp:
 runningTheApp:
   title: Running the App
   changeDefaultPort: Change Default Port
+  autoReloading: Auto Reloading
 domainClasses:
   title: Domain Classes
   creatingDomainClass: Creating a Domain Class
