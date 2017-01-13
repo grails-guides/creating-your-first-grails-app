@@ -57,7 +57,7 @@ Let's take a closer look at `<g:if>`.
     </g:if>
 ----
 
-GSP tags can optionally accept attributes, such as `test` in this example. Different tags require different types of attributes, but typically you will end up passing a Groovy Expression like in this example. Anything Groovy code between the `${` and `}` will be evaluated (on the server) and the result will be substituted on the rendered page.
+GSP tags can optionally accept attributes, such as `test` in this example. Different tags require different types of attributes, but typically you will end up passing a Groovy Expression like in this example. Any Groovy code between the `${` and `}` will be evaluated (on the server) and the result will be substituted on the rendered page.
 
 TIP: You can use Groovy Expressions anywhere on the GSP page, not just in tags. See the `${flash.message}` in our `index.gsp` page.
 
