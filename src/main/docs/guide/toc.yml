@@ -19,6 +19,7 @@ domainClasses:
   expandDomain: Expanding the Domain Model
   bootstrap: Bootstrapping Data
   datasource: Datasources
+  mysqlAsDatasource: Configure MySQL as the Datasource
   console: Grails Console
 controllers:
   title: Controllers
