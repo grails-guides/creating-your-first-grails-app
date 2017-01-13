@@ -10,6 +10,7 @@ creatingTheApp:
   applicationProfile: Application Profile
 runningTheApp:
   title: Running the App
+  changeDefaultPort: Change Default Port
 domainClasses:
   title: Domain Classes
   creatingDomainClass: Creating a Domain Class
