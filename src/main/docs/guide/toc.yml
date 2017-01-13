@@ -30,6 +30,7 @@ controllers:
   respond: Render a response
 views:
   title: Views
+  viewsResolution: Views Resolution
   gsp: GSP
   assetPipeline: Asset Pipeline
 services:
