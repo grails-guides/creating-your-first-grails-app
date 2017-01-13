@@ -4,31 +4,6 @@ Grails' primary view technology is http://docs.grails.org/latest/guide/theWebLay
 
 You've already worked with GSP views in this guide, but let's quickly cover the basics.
 
-By convention, Grails looks for views under the `grails-app/views` directory. It will attempt to resolve views to controller actions by matching the controller name with a directory under the `views` directory. E.g., `HomeController` will resolve to `grails-app/views/home`. Grails will then map actions to GSP pages with the same name. E.g, `index` will resolve to `index.gsp`.
-
-You can also render a particular view from your controller action (overriding Grails' conventions) using the `render` method:
-
-[source, groovy]
-----
-class SomeController {
-    def someAction() {
-        render view: 'anotherView'
-    }
-}
-----
-
-This will attempt to resolve to a `anotherView.gsp` page under `grails-app/views/some/`. If you would like to resolve a view that is not under the controller's own view directory, use a leading `/` to specifiy an absolute path from `grails-app/views`:
-
-[source, groovy]
-----
-class SomeController {
-    def someAction() {
-        render view: '/another/view'
-    }
-}
-----
-
-This will resolve to `view.gsp` under `grails-app/views/another/`.
 
 == Layouts
 
@@ -77,7 +52,3 @@ include::{sourceDir}/grails-app/views/home/index.gsp[lines="1..4"]
 <1> Change "main" to "public"
 
 Refresh the page (or restart the app) and you should see the new layout in action. Feel free to modify the `public.gsp` layout further if you wish.
-
-
-
-

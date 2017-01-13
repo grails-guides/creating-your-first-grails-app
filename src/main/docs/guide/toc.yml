@@ -1,13 +1,17 @@
-gettingStarted: 
+gettingStarted:
   title: Getting Started
   requirements: What you will need
   howto: How to complete the guide
 creatingTheApp:
   title: Creating your Grails App
   installing: Installing Grails
+  grailsApplicationForge: Grails Application Forge
   createApp: Create the App
+  applicationProfile: Application Profile
 runningTheApp:
   title: Running the App
+  changeDefaultPort: Change Default Port
+  autoReloading: Auto Reloading
 domainClasses:
   title: Domain Classes
   creatingDomainClass: Creating a Domain Class
@@ -15,16 +19,23 @@ domainClasses:
   expandDomain: Expanding the Domain Model
   bootstrap: Bootstrapping Data
   datasource: Datasources
+  mysqlAsDatasource: Configure MySQL Datasource
   console: Grails Console
 controllers:
   title: Controllers
   urlMappings: URL Mappings
   scaffolding: Scaffolding
+  dynamicScaffolding: Dynamic Scaffolding
+  staticScaffolding: Static Scaffolding
   respond: Render a response
 views:
   title: Views
+  viewsResolution: Views Resolution
   gsp: GSP
+  gspIteration: GSP Tags Iteration
+  gspLinks: GSP Tags Links
   assetPipeline: Asset Pipeline
+  addJavascriptAsset: Add Javascript Asset
 services:
   title: Services
 testing:
