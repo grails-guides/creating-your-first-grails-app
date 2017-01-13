@@ -25,6 +25,8 @@ controllers:
   title: Controllers
   urlMappings: URL Mappings
   scaffolding: Scaffolding
+  dynamicScaffolding: Dynamic Scaffolding
+  staticScaffolding: Static Scaffolding
   respond: Render a response
 views:
   title: Views
