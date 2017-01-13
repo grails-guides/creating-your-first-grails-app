@@ -1,6 +1,6 @@
 Now that you've created (or downloaded) your Grails project, it's time to run it and see what Grails has already given you.
 
-If you have a local installation of Grails, you can run the app using the `run-app` command from within your project:
+If you have a local installation of Grails, you can run the app using the http://docs.grails.org/latest/ref/Command%20Line/run-app.html[run-app] command from within your project:
 
 [source, bash]
 ----
