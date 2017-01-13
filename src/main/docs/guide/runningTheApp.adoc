@@ -5,17 +5,31 @@ If you have a local installation of Grails, you can run the app using the http:/
 [source, bash]
 ----
 $ cd myApp/
-$ grails run-app
 ----
 
-However, just as you do not need a Grails installation to create a Grails app (if you download it from the http://start.grails.org[Grails Application Forge], for example), you do not need to have a Grails installation to run the app (or any other Grails commands either. You can use the http://docs.grails.org/latest/guide/introduction.html#whatsNewGrailsWrapper[Grails Wrapper] to run any Grails command from within a Grails project (as of 3.2.3).
+### Run the App without Grails Installed
+Thanks to the http://docs.grails.org/latest/guide/introduction.html#whatsNewGrailsWrapper[Grails Wrapper], as of Grails version 3.2.3 or later, you can run any Grails command without having
+Grails installed. If you download it from the http://start.grails.org[Grails Application Forge], the Grails Wrapper is included too.
 
 [source, bash]
 ----
 $ ./grailsw run-app
 ----
 
-You can also use Grails' http://docs.grails.org/latest/guide/commandLine.html#interactiveMode[Interactive Mode] to run the Grails runtime, from which you can issue any Grails command without waiting for the runtime to spin up for each task. In this guide we will be preferring the Grails wrapper for most commands.
+### Run the App with Grails installed
+
+If you have Grails installed in your machine, simply type:
+
+[source, bash]
+----
+$ grails run-app
+----
+
+### Run the App with Grails Interactive Mode
+
+You can also use Grails' http://docs.grails.org/latest/guide/commandLine.html#interactiveMode[Interactive Mode] to run the Grails runtime,
+from which you can issue any Grails command without waiting for the runtime to spin up for each task.
+In this guide we will be preferring the Grails wrapper for most commands.
 
 [source, bash]
 ----
@@ -24,6 +38,8 @@ $ ./grailsw
 | Enter a command name to run. Use TAB for completion:
 grails>run-app      //you can shutdown the app with the stop-app command
 ----
+
+### Run the App with Gradle
 
 Finally, because Grails is built upon https://projects.spring.io/spring-boot/[Spring Boot] and https://gradle.org/[Gradle], you can also use Spring Boot commands like `bootRun` to interact with your Grails application. Like for Grails you do not have to download and install Gradle, this will happen automatically using the the Gradle Wrapper (`gradlew`)
 
