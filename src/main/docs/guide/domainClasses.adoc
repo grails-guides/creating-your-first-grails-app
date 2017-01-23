@@ -1,4 +1,4 @@
-Grails is an https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller[Model View Controller] (MVC) framework, based upon the Spring Boot project. Typically an MVC application divides the responsibilities of the app into three categories:
+Grails is a https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller[Model View Controller] (MVC) framework, based upon the Spring Boot project. Typically an MVC application divides the responsibilities of the app into three categories:
 
 1. Model - code that defines and manages the data
 2. View - code that manages the presentation of data (e.g, HTML page)
