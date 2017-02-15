@@ -42,3 +42,5 @@ testing:
   title: Testing your App
 deployment:
   title: Deploying your App
+helpWithGrails:
+  title: Do you need help with Grails?  
