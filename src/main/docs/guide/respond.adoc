@@ -66,7 +66,7 @@ Edit `grails-app/views/home/index.gsp`:
 
 Run the app and you should see our new message in the `<h1>` header: "Welcome User!", as well as the current total of `Vehicle` instances in the database.
 
-Try entering your own name in the form and submitting it - you should see the page reload and your own name will replace "User". Refresh the page a few tines. Because we stored the `name` in the session, it will persist as long as the session is valid.
+Try entering your own name in the form and submitting it - you should see the page reload and your own name will replace "User". Refresh the page a few times. Because we stored the `name` in the session, it will persist as long as the session is valid.
 
 == Content Negotiation
 
