@@ -15,7 +15,7 @@ class SomeController {
 }
 ----
 
-This will attempt to resolve to a `anotherView.gsp` page under `grails-app/views/some/`. If you would like to resolve a view that is not under the controller's own view directory, use a leading `/` to specifiy an absolute path from `grails-app/views`:
+This will attempt to resolve to a `anotherView.gsp` page under `grails-app/views/home/`. If you would like to resolve a view that is not under the controller's own view directory, use a leading `/` to specifiy an absolute path from `grails-app/views`:
 
 [source, groovy]
 ----
