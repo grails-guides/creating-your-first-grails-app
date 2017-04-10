@@ -1,5 +1,4 @@
 <html>
-<html>
 <head>
     <meta name="layout" content="public"/> <!--1-->
     <title>Home Page</title>
