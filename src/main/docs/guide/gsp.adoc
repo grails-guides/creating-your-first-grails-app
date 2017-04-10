@@ -7,7 +7,7 @@ Edit `grails-app/views/home/index.gsp`
 [source,xml]
 .grails-app/views/home/index.gsp
 ----
-<html>
+<%@ page import="com.example.Vehicle" %>
 <html>
 <head>
     <meta name="layout" content="public"/>
