@@ -3,9 +3,9 @@ Every Grails project includes a `BootStrap.groovy` file under `grails-app/init`.
 Edit `grails-app/init/BootStrap.groovy`, as shown below:
 
 [source,groovy]
-.grails-app/domain/com/example/Make.groovy
+.grails-app/init/demo/BootStrap.groovy
 ----
-include::{sourceDir}/grails-app/init/creating/a/grails/application/BootStrap.groovy[]
+include::{sourceDir}/grails-app/init/demo/BootStrap.groovy[]
 ----
 
 Now restart the application, and browse to the DBConsole, you should be able to expand the three tables and see our newly created data.

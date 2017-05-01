@@ -1,4 +1,4 @@
-package com.example
+package demo
 
 import grails.transaction.Transactional
 

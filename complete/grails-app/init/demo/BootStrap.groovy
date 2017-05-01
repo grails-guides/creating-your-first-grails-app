@@ -1,8 +1,8 @@
-package creating.a.grails.application
+package demo
 
-import com.example.Make
-import com.example.Model
-import com.example.Vehicle
+import demo.Make
+import demo.Model
+import demo.Vehicle
 
 class BootStrap {
 

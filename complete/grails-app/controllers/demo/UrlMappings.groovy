@@ -1,4 +1,4 @@
-package creating.a.grails.application
+package demo
 
 class UrlMappings {
 

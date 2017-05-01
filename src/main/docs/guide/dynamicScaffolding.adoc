@@ -2,29 +2,29 @@ Now that we have a home page, let's create controllers to manage the domain mode
 
 [source, bash]
 ----
-$ ./grailsw create-controller com.example.Vehicle
+$ ./grailsw create-controller demo.Vehicle
 
-| Created grails-app/controllers/com/example/VehicleController.groovy
-| Created src/test/groovy/com/example/VehicleControllerSpec.groovy
+| Created grails-app/controllers/demo/VehicleController.groovy
+| Created src/test/groovy/demo/VehicleControllerSpec.groovy
 
-$ ./grailsw create-controller com.example.Make
+$ ./grailsw create-controller demo.Make
 
-| Created grails-app/controllers/com/example/MakeController.groovy
-| Created src/test/groovy/com/example/MakeControllerSpec.groovy
+| Created grails-app/controllers/demo/MakeController.groovy
+| Created src/test/groovy/demo/MakeControllerSpec.groovy
 
-$ ./grailsw create-controller com.example.Model
+$ ./grailsw create-controller demo.Model
 
-| Created grails-app/controllers/com/example/ModelController.groovy
-| Created src/test/groovy/com/example/ModelControllerSpec.groovy
+| Created grails-app/controllers/demo/ModelController.groovy
+| Created src/test/groovy/demo/ModelControllerSpec.groovy
 ----
 
 
 To use scaffolding, edit the three controllers we just created, and replace the default `index` action with a `scaffolding` property as shown in the examples below.
 
 [source, groovy]
-.grails-app/controllers/com/example/VehicleController.groovy
+.grails-app/controllers/demo/VehicleController.groovy
 ----
-package com.example
+package demo
 
 class VehicleController {
 
@@ -33,9 +33,9 @@ class VehicleController {
 ----
 
 [source, groovy]
-.grails-app/controllers/com/example/MakeControler.groovy
+.grails-app/controllers/demo/MakeControler.groovy
 ----
-package com.example
+package demo
 
 class MakeControler {
 
@@ -44,9 +44,9 @@ class MakeControler {
 ----
 
 [source, groovy]
-.grails-app/controllers/com/example/ModelController.groovy
+.grails-app/controllers/demo/ModelController.groovy
 ----
-package com.example
+package demo
 
 class ModelController {
 

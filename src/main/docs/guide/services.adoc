@@ -12,18 +12,18 @@ Create a new service using the `create-service` Grails command:
 
 [source, bash]
 ----
-$ ./grailsw create-service com.example.ValueEstimateService
+$ ./grailsw create-service demo.ValueEstimateService
 
-| Created grails-app/services/com/example/ValueEstimateService.groovy
-| Created src/test/groovy/com/example/ValueEstimateServiceSpec.groovy
+| Created grails-app/services/demo/ValueEstimateService.groovy
+| Created src/test/groovy/demo/ValueEstimateServiceSpec.groovy
 ----
 
-Edit `grails-app/services/com/example/ValueEstimateService.groovy`
+Edit `grails-app/services/demo/ValueEstimateService.groovy`
 
 [source,groovy]
-.grails-app/services/com/example/ValueEstimateService.groovy
+.grails-app/services/demo/ValueEstimateService.groovy
 ----
-package com.example
+package demo
 
 import grails.transaction.Transactional
 
@@ -39,21 +39,21 @@ class ValueEstimateService {
 Grails has provided a `serviceMethod` stub as an example. Delete it and replace it with the following content:
 
 [source,groovy]
-.grails-app/services/com/example/ValueEstimateService.groovy
+.grails-app/services/demo/ValueEstimateService.groovy
 ----
-include::{sourceDir}/grails-app/services/com/example/ValueEstimateService.groovy[]
+include::{sourceDir}/grails-app/services/demo/ValueEstimateService.groovy[]
 ----
 
 Obviously this method of estimating a vehicle's value is pretty contrived! In reality you would likely call a third-party webservice to get a valuation, or perhaps run a query against your own database.  However, the point of this example is to show the sort of "business logic" that can be placed in services, rather than being calculated within a controller or view.
 
 Now, let's use our new service.
 
-Edit `grails-app/controllers/com/example/VehicleController.groovy` (the scaffolded controller we generated earlier), and add the property shown below:
+Edit `grails-app/controllers/demo/VehicleController.groovy` (the scaffolded controller we generated earlier), and add the property shown below:
 
 [source,groovy]
-.grails-app/controllers/com/example/VehicleController.groovy
+.grails-app/controllers/demo/VehicleController.groovy
 ----
-include::{sourceDir}/grails-app/controllers/com/example/VehicleController.groovy[indent=0,lines="6..11"]
+include::{sourceDir}/grails-app/controllers/demo/VehicleController.groovy[indent=0,lines="6..11"]
 ----
 <1> By simply defining a property in our controller with the same name as our service class, Grails will inject a reference to the service for us.
 
@@ -61,9 +61,9 @@ include::{sourceDir}/grails-app/controllers/com/example/VehicleController.groovy
 Now (still editing `VehicleController.groovy`), modify the `show` action as seen below:
 
 [source,groovy]
-.grails-app/controllers/com/example/VehicleController.groovy
+.grails-app/controllers/demo/VehicleController.groovy
 ----
-include::{sourceDir}/grails-app/controllers/com/example/VehicleController.groovy[indent=0,lines="18..20"]
+include::{sourceDir}/grails-app/controllers/demo/VehicleController.groovy[indent=0,lines="18..20"]
 ----
 
 We've added new property to the `model`, called `estimatedValue`. The value of this property is the result of calling our service method, `getEstimate`, to which we pass the `vehicle` property we are about to render.

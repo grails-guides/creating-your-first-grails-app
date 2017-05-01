@@ -1,4 +1,4 @@
-import com.example.*
+import demo.*
 
 def vehicles = Vehicle.list()
 

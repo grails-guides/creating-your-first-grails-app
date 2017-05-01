@@ -1,4 +1,4 @@
-package com.example
+package demo
 
 class Vehicle {
 

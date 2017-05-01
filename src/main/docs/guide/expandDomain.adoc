@@ -5,29 +5,29 @@ Create two new domain classes:
 
 [source, bash]
 ----
-$ ./grailsw create-domain-class com.example.Make
+$ ./grailsw create-domain-class demo.Make
 
-| Created grails-app/domain/com/example/Make.groovy
-| Created src/test/groovy/com/example/Make.groovy
+| Created grails-app/domain/demo/Make.groovy
+| Created src/test/groovy/demo/Make.groovy
 
-$ ./grailsw create-domain-class com.example.Model
+$ ./grailsw create-domain-class demo.Model
 
-| Created grails-app/domain/com/example/Model.groovy
-| Created src/test/groovy/com/example/Model.groovy
+| Created grails-app/domain/demo/Model.groovy
+| Created src/test/groovy/demo/Model.groovy
 ----
 
 Edit these two files with the following content:
 
 [source,groovy]
-.grails-app/domain/com/example/Make.groovy
+.grails-app/domain/demo/Make.groovy
 ----
-include::{sourceDir}/grails-app/domain/com/example/Make.groovy[]
+include::{sourceDir}/grails-app/domain/demo/Make.groovy[]
 ----
 
 [source,groovy]
-.grails-app/domain/com/example/Model.groovy
+.grails-app/domain/demo/Model.groovy
 ----
-include::{sourceDir}/grails-app/domain/com/example/Model.groovy[]
+include::{sourceDir}/grails-app/domain/demo/Model.groovy[]
 ----
 
 NOTE: The `belongsTo` property is one of several properties that GORM uses to determine associations between domain classes. Others include `hasMany` and `hasOne`. For more information please see the http://gorm.grails.org/6.0.x/hibernate/manual/#gormAssociation[GORM documentation].
@@ -35,9 +35,9 @@ NOTE: The `belongsTo` property is one of several properties that GORM uses to de
 Now, update `Vehicle.groovy` to use the new `Make` and `Model` classes instead of `String`.
 
 [source,groovy]
-.grails-app/domain/com/example/Vehicle.groovy
+.grails-app/domain/demo/Vehicle.groovy
 ----
-include::{sourceDir}/grails-app/domain/com/example/Vehicle.groovy[]
+include::{sourceDir}/grails-app/domain/demo/Vehicle.groovy[]
 ----
 
 [source, groovy]

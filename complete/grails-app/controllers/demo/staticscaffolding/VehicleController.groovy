@@ -1,9 +1,8 @@
-package com.example.staticscaffolding
+package demo.staticscaffolding
 
-import com.example.Vehicle
+import demo.Vehicle
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-
 
 @Transactional(readOnly = true) // <1>
 class VehicleController {

@@ -1,8 +1,10 @@
-package com.example
+package demo
 
-class Make {
+class Model {
 
     String name
+
+    static belongsTo = [ make: Make ]
 
     static constraints = {
     }

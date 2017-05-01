@@ -1,9 +1,9 @@
-Let's modify our `HomeController` to render some custom content on our home page. Edit `grails-app/controllers/com/example/HomeController.groovy`.
+Let's modify our `HomeController` to render some custom content on our home page. Edit `grails-app/controllers/demo/HomeController.groovy`.
 
 [source, groovy]
-.grails-app/controllers/com/example/HomeController.groovy
+.grails-app/controllers/demo/HomeController.groovy
 ----
-package com.example
+package demo
 
 class HomeController {
 
