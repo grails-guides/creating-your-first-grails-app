@@ -1,5 +1,6 @@
 package demo
 
+@SuppressWarnings('GrailsDomainReservedSqlKeywordName')
 class Vehicle {
 
     Integer year

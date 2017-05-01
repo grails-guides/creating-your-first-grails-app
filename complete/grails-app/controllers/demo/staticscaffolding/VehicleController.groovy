@@ -1,15 +1,19 @@
 package demo.staticscaffolding
 
+import static org.springframework.http.HttpStatus.NO_CONTENT
+import static org.springframework.http.HttpStatus.NOT_FOUND
+import static org.springframework.http.HttpStatus.OK
+import static org.springframework.http.HttpStatus.CREATED
 import demo.Vehicle
-import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+@SuppressWarnings(['LineLength'])
 @Transactional(readOnly = true) // <1>
 class VehicleController {
 
     static namespace = 'staticscaffolding'
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: 'POST', update: 'PUT', delete: 'DELETE']
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100) // <2>
@@ -20,6 +24,7 @@ class VehicleController {
         respond vehicle //<3>
     }
 
+    @SuppressWarnings(['FactoryMethodName', 'GrailsMassAssignment'])
     def create() {
         respond new Vehicle(params) // <3>
     }
@@ -76,7 +81,7 @@ class VehicleController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'vehicle.label', default: 'Vehicle'), vehicle.id])
                 redirect vehicle // <6>
             }
-            '*'{ respond vehicle, [status: OK] } // <3>
+            '*' { respond vehicle, [status: OK] } // <3>
         }
     }
 
@@ -95,9 +100,9 @@ class VehicleController {
             form multipartForm {
                 //<5>
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'vehicle.label', default: 'Vehicle'), vehicle.id])
-                redirect action:"index", method:"GET" // <6>
+                redirect action: 'index', method: 'GET' // <6>
             }
-            '*'{ render status: NO_CONTENT } // <7>
+            '*' { render status: NO_CONTENT } // <7>
         }
     }
 
@@ -106,9 +111,9 @@ class VehicleController {
             form multipartForm {
                 //<5>
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'vehicle.label', default: 'Vehicle'), params.id])
-                redirect action: "index", method: "GET" //<6>
+                redirect action: 'index', method: 'GET' //<6>
             }
-            '*'{ render status: NOT_FOUND }  // <7>
+            '*' { render status: NOT_FOUND }  // <7>
         }
     }
 }

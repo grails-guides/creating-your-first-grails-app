@@ -1,12 +1,16 @@
 package demo
 
-import static org.springframework.http.HttpStatus.*
+import static org.springframework.http.HttpStatus.CREATED
+import static org.springframework.http.HttpStatus.OK
+import static org.springframework.http.HttpStatus.NOT_FOUND
+import static org.springframework.http.HttpStatus.NO_CONTENT
 import grails.transaction.Transactional
 
+@SuppressWarnings('LineLength')
 @Transactional(readOnly = true)
 class VehicleController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: 'POST', update: 'PUT', delete: 'DELETE']
 
     def valueEstimateService //<1>
 
@@ -19,6 +23,7 @@ class VehicleController {
         respond vehicle, model: [estimatedValue: valueEstimateService.getEstimate(vehicle)]
     }
 
+    @SuppressWarnings(['FactoryMethodName', 'GrailsMassAssignment'])
     def create() {
         respond new Vehicle(params)
     }
@@ -73,7 +78,7 @@ class VehicleController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'vehicle.label', default: 'Vehicle'), vehicle.id])
                 redirect vehicle
             }
-            '*'{ respond vehicle, [status: OK] }
+            '*' { respond vehicle, [status: OK] }
         }
     }
 
@@ -91,9 +96,9 @@ class VehicleController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'vehicle.label', default: 'Vehicle'), vehicle.id])
-                redirect action:"index", method:"GET"
+                redirect action: 'index', method: 'GET'
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -101,9 +106,9 @@ class VehicleController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'vehicle.label', default: 'Vehicle'), params.id])
-                redirect action: "index", method: "GET"
+                redirect action: 'index', method: 'GET'
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

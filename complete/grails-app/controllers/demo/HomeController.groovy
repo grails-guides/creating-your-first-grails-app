@@ -9,7 +9,7 @@ class HomeController {
     def updateName(String name) {
         session.name = name
 
-        flash.message = "Name has been updated"
+        flash.message = 'Name has been updated'
 
         redirect action: 'index'
     }
