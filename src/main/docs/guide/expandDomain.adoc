@@ -40,14 +40,5 @@ Now, update `Vehicle.groovy` to use the new `Make` and `Model` classes instead o
 include::{sourceDir}/grails-app/domain/demo/Vehicle.groovy[]
 ----
 
-[source, groovy]
-----
-def vehicle = Vehicle.findByName('pickup')
-if(vehicle) {
-    println vehicle.model // e.g, 'Titan'
-    println vehicle.make // e.g, 'Nissan'
-}
-----
-
 Grails (via GORM) will now create three tables in our database, for our three domain classes, and create the necessary associations between the tables. Run the app again and open the DB Console to view the new tables.
 
