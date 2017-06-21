@@ -1,4 +1,4 @@
-Let's take a look at one more common GPS tag: `<g:link>`
+Let's take a look at one more common GSP tag: `<g:link>`
 
 [source,xml]
 .grails-app/views/home/index.gsp
