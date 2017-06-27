@@ -1,6 +1,6 @@
 Every Grails project includes a `BootStrap.groovy` file under `grails-app/init`. This file can be used for any custom logic you want to happen during application startup. One excellent use of the file is to preload some data in our database. Let's create a few instances of our three domain classes.
 
-Edit `grails-app/init/BootStrap.groovy`, as shown below:
+Edit `grails-app/init/demo/BootStrap.groovy`, as shown below:
 
 [source,groovy]
 .grails-app/init/demo/BootStrap.groovy
