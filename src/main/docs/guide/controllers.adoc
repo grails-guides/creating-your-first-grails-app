@@ -6,10 +6,10 @@ Following the convention over configuration principle, Grails will configure any
 
 [source, bash]
 ----
-$ ./grailsw create-controller demo.Home
+$ ./grailsw create-controller org.grails.guides.Home
 
-| Created grails-app/controllers/demo/HomeController.groovy
-| Created src/test/groovy/demo/HomeControllerSpec.groovy
+| Created grails-app/controllers/org/grails/guides/HomeController.groovy
+| Created src/test/groovy/org/grails/guides/HomeControllerSpec.groovy
 ----
 
 TIP: Note that Grails adds the `*Controller` suffix automatically.
@@ -17,9 +17,9 @@ TIP: Note that Grails adds the `*Controller` suffix automatically.
 Let's take a look at our new controller.
 
 [source, groovy]
-.grails-app/controllers/HomeController.groovy
+.grails-app/controllers/org/grails/guides/HomeController.groovy
 ----
-package demo
+package org.grails.guides
 
 class HomeController {
 

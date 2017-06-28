@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: creating.a.grails.application
+        defaultPackage: org.grails.guides
     spring:
         transactionManagement:
             proxies: false

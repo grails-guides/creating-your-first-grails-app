@@ -7,9 +7,9 @@ TIP: Learn much more about URL Mappings from the http://docs.grails.org/latest/g
 Let's look at the default `URLMappings.groovy` file.
 
 [source,groovy]
-.grails-app/controllers/creating/a/grails/application/UrlMappings.groovy
+.grails-app/controllers/org/grails/guides/UrlMappings.groovy
 ----
-package creating.a.grails.application
+package org.grails.guides
 
 class UrlMappings {
 
@@ -31,9 +31,9 @@ class UrlMappings {
 
 Let's change the `/` rule to point to our new `HomeController`. Edit the line as follows:
 [source,groovy]
-.grails-app/controllers/demo/UrlMappings.groovy
+.grails-app/controllers/org/grails/guides/UrlMappings.groovy
 ----
-package demo
+package org.grails.guides
 
 class UrlMappings {
 
@@ -51,9 +51,9 @@ class UrlMappings {
 By convention, a request to a controller without an action name will go to an `index` action, if it exists (if not, an error will be thrown). You can change this behavior if you want by specifying a `defaultAction` property in the controller:
 
 [source, groovy]
-.grails-app/controllers/demo/HomeController.groovy
+.grails-app/controllers/org/grails/guides/HomeController.groovy
 ----
-package demo
+package org.grails.guides
 
 class HomeController {
 

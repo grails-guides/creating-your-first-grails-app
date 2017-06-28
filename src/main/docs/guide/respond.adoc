@@ -1,9 +1,9 @@
-Let's modify our `HomeController` to render some custom content on our home page. Edit `grails-app/controllers/demo/HomeController.groovy`.
+Let's modify our `HomeController` to render some custom content on our home page. Edit `grails-app/controllers/org/grails/guides/HomeController.groovy`.
 
 [source, groovy]
-.grails-app/controllers/demo/HomeController.groovy
+.grails-app/controllers/org/grails/guides/HomeController.groovy
 ----
-package demo
+package org.grails.guides
 
 class HomeController {
 
@@ -93,9 +93,9 @@ We've used `curl` to call our `index` action, but we've changed our `Accept` hea
 You can request difference content types in the browser as well, thanks to Grails' default URL Mappings (shown below):
 
 [source,groovy]
-.grails-app/controllers/creating/a/grails/application/UrlMappings.groovy
+.grails-app/controllers/org/grails/guides/UrlMappings.groovy
 ----
-include::{sourceDir}/grails-app/controllers/creating/a/grails/application/UrlMappings.groovy[lines="6..10"]
+include::{sourceDir}/grails-app/controllers/org/grails/guides/UrlMappings.groovy[lines="6..10"]
 ----
 
 Note the `(.$format)?` token in the mapping. This will match a suffix on our URL such as `.json` or `.xml`. Test this out in your browser.

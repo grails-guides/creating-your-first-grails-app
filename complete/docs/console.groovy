@@ -1,4 +1,4 @@
-import demo.*
+import org.grails.guides.*
 
 def vehicles = Vehicle.list()
 

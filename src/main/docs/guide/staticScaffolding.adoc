@@ -4,21 +4,21 @@ To generate the views (and continue to use the dynamic scaffolding):
 
 [source, bash]
 ----
-$ ./grailsw generate-views demo.Vehicle
+$ ./grailsw generate-views Vehicle
 ----
 
 To generate the controller (and continue to use the dynamic GSP views):
 
 [source, bash]
 ----
-$ ./grailsw generate-controller demo.Vehicle
+$ ./grailsw generate-controller Vehicle
 ----
 
 To both views and controllers (bypassing all dynamic generation):
 
 [source, bash]
 ----
-$ ./grailsw generate-all demo.Vehicle
+$ ./grailsw generate-all Vehicle
 ----
 
 The generated controller will be placed under `grails-app/controller`, and the generated views will be placed under `grails-app/views/vehicle`.
@@ -29,14 +29,14 @@ Let's generate the controller and views for `Vehicle` and take a look at the res
 
 [source, bash]
 ----
-$ ./grailsw generate-all demo.Vehicle -force
+$ ./grailsw generate-all Vehicle -force
 ----
 
-Open the `VehicleController.groovy` file at `grails-app/controllers/demo/`.
+Open the `VehicleController.groovy` file at `grails-app/controllers/org/grails/guides/`.
 
 [source, groovy]
 ----
-include::{sourceDir}/grails-app/controllers/demo/staticscaffolding/VehicleController.groovy[indent=0,lines="4..8,10..114"]
+include::{sourceDir}/grails-app/controllers/org/grails/guides/scaffolding/VehicleController.groovy[indent=0,lines="4..8,10..114"]
 ----
 
 <1> The http://docs.grails.org/latest/api/grails/transaction/Transactional.html[`@Transactional`] annotation configures the transactional behavior of the controller or method. Transactions are used to manage persistence and other complicated operations that should be completed together (and potentially rolled-back if any one of the steps fails).  For more information on transactions, see the http://docs.grails.org/latest/guide/single.html#declarativeTransactions[Grails documentation]

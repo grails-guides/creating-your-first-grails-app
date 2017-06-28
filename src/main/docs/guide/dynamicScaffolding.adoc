@@ -2,29 +2,29 @@ Now that we have a home page, let's create controllers to manage the domain mode
 
 [source, bash]
 ----
-$ ./grailsw create-controller demo.Vehicle
+$ ./grailsw create-controller Vehicle
 
-| Created grails-app/controllers/demo/VehicleController.groovy
-| Created src/test/groovy/demo/VehicleControllerSpec.groovy
+| Created grails-app/controllers/org/grails/guides/VehicleController.groovy
+| Created src/test/groovy/org/grails/guides/VehicleControllerSpec.groovy
 
-$ ./grailsw create-controller demo.Make
+$ ./grailsw create-controller Make
 
-| Created grails-app/controllers/demo/MakeController.groovy
-| Created src/test/groovy/demo/MakeControllerSpec.groovy
+| Created grails-app/controllers/org/grails/guides/MakeController.groovy
+| Created src/test/groovy/org/grails/guides/MakeControllerSpec.groovy
 
-$ ./grailsw create-controller demo.Model
+$ ./grailsw create-controller Model
 
-| Created grails-app/controllers/demo/ModelController.groovy
-| Created src/test/groovy/demo/ModelControllerSpec.groovy
+| Created grails-app/controllers/org/grails/guides/ModelController.groovy
+| Created src/test/groovy/org/grails/guides/ModelControllerSpec.groovy
 ----
 
 
 To use scaffolding, edit the three controllers we just created, and replace the default `index` action with a `scaffolding` property as shown in the examples below.
 
 [source, groovy]
-.grails-app/controllers/demo/VehicleController.groovy
+.grails-app/controllers/org/grails/guides/VehicleController.groovy
 ----
-package demo
+package org.grails.guides
 
 class VehicleController {
 
@@ -33,9 +33,9 @@ class VehicleController {
 ----
 
 [source, groovy]
-.grails-app/controllers/demo/MakeControler.groovy
+.grails-app/controllers/org/grails/guides/MakeControler.groovy
 ----
-package demo
+package org.grails.guides
 
 class MakeControler {
 
@@ -44,9 +44,9 @@ class MakeControler {
 ----
 
 [source, groovy]
-.grails-app/controllers/demo/ModelController.groovy
+.grails-app/controllers/org/grails/guides/ModelController.groovy
 ----
-package demo
+package org.grails.guides
 
 class ModelController {
 
