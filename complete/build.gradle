@@ -54,8 +54,9 @@ dependencies {
 
 bootRun {
     jvmArgs('-Dspring.output.ansi.enabled=always')
-    addResources = true    
+    addResources = true
 }
+
 
 assets {
     minifyJs = true
