@@ -1,16 +1,16 @@
 package org.grails.guides
 
-import grails.test.mixin.Mock
-import grails.test.mixin.TestFor
+import grails.testing.gorm.DataTest
+import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-/**
- * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
- */
+class ValueEstimateServiceSpec extends Specification implements ServiceUnitTest<ValueEstimateService>, DataTest {
 
-@Mock([Make, Model, Vehicle]) // <1>
-@TestFor(ValueEstimateService)
-class ValueEstimateServiceSpec extends Specification {
+    void setupSpec() { // <1>
+        mockDomain Make
+        mockDomain Model
+        mockDomain Vehicle
+    }
 
     void testEstimateRetrieval() {
         given: 'a vehicle'
