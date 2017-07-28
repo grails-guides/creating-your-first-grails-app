@@ -37,14 +37,11 @@ Grails automatically creates a test spec for services created with the `create-s
 ----
 package org.grails.guides
 
-import grails.test.mixin.TestFor
+import grails.testing.gorm.DataTest
+import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-/**
- * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
- */
-@TestFor(ValueEstimateService)
-class ValueEstimateServiceSpec extends Specification {
+class ValueEstimateServiceSpec extends Specification implements ServiceUnitTest<ValueEstimateService>, DataTest {
 
     def setup() {
     }
@@ -83,7 +80,8 @@ Now that we've confirmed our test is failing, let's edit this test case to exerc
 ----
 include::{sourceDir}/src/test/groovy/org/grails/guides/ValueEstimateServiceSpec.groovy[]
 ----
-<1> We're using the https://docs.grails.org/latest/api/grails/test/mixin/Mock.html[`Mock`] annotation (provided by Grails) to mock our domain classes, as GORM is not set up by default in a unit test.
+<1> When mocking multiple objects using the updated testing framework in Grails 3.3 we now perform mocks during setup and no
+longer require the @Mock annotation.
 
 
 We've kept things pretty simple in this test, since we don't have very complex logic to test, but also so you can focus on the basic formula of the Spock test case. Spock provides a set of keywords which allow you to lay out your test in a very human-readable form.
