@@ -63,7 +63,7 @@ Now (still editing `VehicleController.groovy`), modify the `show` action as seen
 [source,groovy]
 .grails-app/controllers/org/grails/guides/VehicleController.groovy
 ----
-include::{sourceDir}/grails-app/controllers/org/grails/guides/VehicleController.groovy[indent=0,lines="18..20"]
+include::{sourceDir}/grails-app/controllers/org/grails/guides/VehicleController.groovy[indent=0,lines="22..24"]
 ----
 
 We've added new property to the `model`, called `estimatedValue`. The value of this property is the result of calling our service method, `getEstimate`, to which we pass the `vehicle` property we are about to render.
