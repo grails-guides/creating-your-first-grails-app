@@ -6,7 +6,7 @@ Following the convention over configuration principle, Grails will configure any
 
 [source, bash]
 ----
-$ ./grailsw create-controller org.grails.guides.Home
+$ ./grailsw create-controller Home
 
 | Created grails-app/controllers/org/grails/guides/HomeController.groovy
 | Created src/test/groovy/org/grails/guides/HomeControllerSpec.groovy
