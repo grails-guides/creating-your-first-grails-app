@@ -37,7 +37,6 @@ Create the file `index.gsp` under the `grails-app/views/home` directory.
 .grails-app/views/home/index.gsp
 ----
 <html>
-<html>
 <head>
     <meta name="layout" content="main"/>
     <title>Home Page</title>
