@@ -1,0 +1,33 @@
+Edit `build.gradle`
+
+[source,groovy]
+.build.gradle
+----
+dependencies {
+    //...
+
+    runtime 'postgresql:postgresql-jdbc42:9.4.1208-atlassian-hosted' <1>
+----
+<1> Add the PostreSQL JDBC driver as a dependency
+
+include::{commondir}/common-warningDependencyNotBuildscriptDependency.adoc[]
+
+Edit `application.yml`
+
+[source,yml]
+.grails-app/conf/application.yml
+----
+dataSource:
+    pooled: true
+    jmxExport: true
+    driverClassName: org.postgresql.Driver
+    dialect: org.hibernate.dialect.PostgreSQL9Dialect
+    username: testUser
+    password: testing
+environments:
+    development:
+        dataSource:
+            dbCreate: update
+            url: jdbc:postgresql://localhost:5432/db_name
+----
+
