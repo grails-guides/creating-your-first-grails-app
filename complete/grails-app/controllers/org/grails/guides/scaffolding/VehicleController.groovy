@@ -5,10 +5,11 @@ import static org.springframework.http.HttpStatus.NOT_FOUND
 import static org.springframework.http.HttpStatus.OK
 import static org.springframework.http.HttpStatus.CREATED
 import org.grails.guides.Vehicle
-import grails.transaction.Transactional
+import grails.gorm.transactions.Transactional
+import grails.gorm.transactions.ReadOnly
 
 @SuppressWarnings(['LineLength'])
-@Transactional(readOnly = true) // <1>
+@ReadOnly // <1>
 class VehicleController {
 
     static namespace = 'scaffolding'
