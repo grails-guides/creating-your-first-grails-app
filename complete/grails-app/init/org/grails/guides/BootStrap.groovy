@@ -1,19 +1,25 @@
 package org.grails.guides
 
+import groovy.transform.CompileStatic
+
+@CompileStatic
 class BootStrap {
 
+    MakeService makeService
+    ModelService modelService
+    VehicleService vehicleService
     def init = { servletContext ->
 
-        def nissan = new Make(name: 'Nissan').save()
-        def ford = new Make(name: 'Ford').save()
+        Make nissan = makeService.save('Nissan')
+        Make ford = makeService.save( 'Ford')
 
-        def titan = new Model(name: 'Titan', make: nissan).save()
-        def leaf = new Model(name: 'Leaf', make: nissan).save()
-        def windstar = new Model(name: 'Windstar', make: ford).save()
+        Model titan = modelService.save('Titan', nissan)
+        Model leaf = modelService.save('Leaf', nissan)
+        Model windstar = modelService.save('Windstar', ford)
 
-        new Vehicle(name: 'Pickup',  make: nissan, model: titan, year: 2012).save()
-        new Vehicle(name: 'Economy', make: nissan, model: leaf, year: 2014).save()
-        new Vehicle(name: 'Minivan', make: ford, model: windstar, year: 1990).save()
+        vehicleService.save('Pickup', nissan, titan, 2012).save()
+        vehicleService.save('Economy', nissan, leaf, 2014).save()
+        vehicleService.save('Minivan', ford, windstar, 1990).save()
     }
     def destroy = {
     }
