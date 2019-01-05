@@ -265,13 +265,11 @@ ruleset {
     JUnitAssertAlwaysSucceeds 
     JUnitFailWithoutMessage 
     JUnitLostTest 
-    JUnitPublicField 
-    JUnitPublicNonTestMethod 
+    JUnitPublicField
     JUnitPublicProperty 
     JUnitSetUpCallsSuper 
     JUnitStyleAssertions 
-    JUnitTearDownCallsSuper 
-    JUnitTestMethodWithoutAssert 
+    JUnitTearDownCallsSuper
     JUnitUnnecessarySetUp 
     JUnitUnnecessaryTearDown 
     JUnitUnnecessaryThrowsException 
