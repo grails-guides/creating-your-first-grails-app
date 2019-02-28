@@ -90,7 +90,7 @@ Date: Wed, 11 Jan 2017 04:06:57 GMT
 
 We've used `curl` to call our `index` action, but we've changed our `Accept` header to `application/json`. Now instead of an HTML page, we receive the same data in JSON.
 
-You can request difference content types in the browser as well, thanks to Grails' default URL Mappings (shown below):
+You can request different content types in the browser as well, thanks to Grails' default URL Mappings (shown below):
 
 [source,groovy]
 .grails-app/controllers/org/grails/guides/UrlMappings.groovy
