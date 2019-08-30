@@ -53,7 +53,7 @@ Edit `grails-app/controllers/org/grails/guides/VehicleController.groovy` (the sc
 [source,groovy]
 .grails-app/controllers/org/grails/guides/VehicleController.groovy
 ----
-include::{sourceDir}/grails-app/controllers/org/grails/guides/scaffolding/VehicleController.groovy[indent=0,lines="6..11"]
+include::{sourceDir}/grails-app/controllers/org/grails/guides/scaffolding/VehicleController.groovy[indent=0,lines="9..15"]
 ----
 <1> By simply defining a property in our controller with the same name as our service class, Grails will inject a reference to the service for us.
 
