@@ -68,7 +68,7 @@ dependencies {
     testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.grails.plugins:geb"
     testCompile "org.grails:grails-web-testing-support"
-    testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.35.1"
+    testCompile "org.seleniumhq.selenium:htmlunit-driver:2.35.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.35.0"
 }
 
