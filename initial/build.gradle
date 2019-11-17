@@ -86,8 +86,8 @@ bootRun {
 }
 
 webdriverBinaries {
-    geckodriver '0.23.0'
     chromedriver '77.0.3865.40'
+    geckodriver '0.24.0'
 }
 
 tasks.withType(Test) {
