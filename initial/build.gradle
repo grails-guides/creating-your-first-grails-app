@@ -69,11 +69,11 @@ dependencies {
     testCompile "org.mockito:mockito-core"
     testCompile "org.grails:grails-web-testing-support"
     testCompile "org.grails.plugins:geb"
-    testCompile "org.seleniumhq.selenium:selenium-remote-driver:3.12.0"
-    testCompile "org.seleniumhq.selenium:selenium-api:3.12.0"
-    testCompile "org.seleniumhq.selenium:selenium-support:3.12.0"
-    testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:3.12.0"
-    testRuntime "org.seleniumhq.selenium:selenium-firefox-driver:3.12.0"
+    testCompile "org.seleniumhq.selenium:selenium-remote-driver:3.141.59"
+    testCompile "org.seleniumhq.selenium:selenium-api:3.141.59"
+    testCompile "org.seleniumhq.selenium:selenium-support:3.141.59"
+    testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:3.141.59"
+    testRuntime "org.seleniumhq.selenium:selenium-firefox-driver:3.141.59"
 }
 
 bootRun {
