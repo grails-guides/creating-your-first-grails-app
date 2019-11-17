@@ -1,1 +1,1 @@
-include::{commondir}/common-requirements.adoc[]
+include::{commondir}/common-requirements-grails3.adoc[]
