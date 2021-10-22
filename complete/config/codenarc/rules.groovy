@@ -249,8 +249,7 @@ ruleset {
     ImportFromSunPackages 
     MisorderedStaticImports 
     NoWildcardImports 
-    UnnecessaryGroovyImport 
-    UnusedImport 
+    UnnecessaryGroovyImport
     
     // rulesets/jdbc.xml
     DirectConnectionManagement 
