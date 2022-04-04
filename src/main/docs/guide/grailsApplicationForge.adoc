@@ -1,1 +1,1 @@
-include::{commondir}/common-grailsApplicationForge.adoc[]
+include::{commondir}/common-grailsApplicationForge5.adoc[]

@@ -6,7 +6,7 @@ Edit `build.gradle`
 dependencies {
     //...
 
-    runtime 'mysql:mysql-connector-java:5.1.40' <1>
+    runtime 'mysql:mysql-connector-java:8.0.28' <1>
 ----
 <1> Add the MySQL JDBC driver as a dependency
 
