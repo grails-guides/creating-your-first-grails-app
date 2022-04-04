@@ -67,7 +67,7 @@ dependencies {
     runtimeOnly "com.bertramlabs.plugins:asset-pipeline-grails:3.3.4"
     testImplementation "io.micronaut:micronaut-inject-groovy"
     //uncomment to use MySQL
-    //runtimeOnly 'mysql:mysql-connector-java:5.1.40'
+    //runtimeOnly 'mysql:mysql-connector-java:8.0.28'
     testImplementation "org.grails:grails-gorm-testing-support"
     testImplementation "org.grails.plugins:geb"
     testImplementation "org.grails:grails-web-testing-support"
