@@ -1,1 +1,1 @@
-include::{commondir}/common-installingGrails.adoc[]
+include::{commondir}/common-installingGrails5.adoc[]
