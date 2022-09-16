@@ -52,7 +52,7 @@ Let's take a closer look at `<g:if>`.
 
 [source,xml]
 ----
-    <g:if test="${isThisTrue}}>
+    <g:if test="${isThisTrue}">
         Some content
     </g:if>
 ----
