@@ -54,7 +54,7 @@ Create the file `index.gsp` under the `grails-app/views/home` directory.
 </html>
 ----
 
-Run the application again and browser to `http:localhost:8080/home`. You should see your new page.
+Run the application again and browser to `http://localhost:8080/home`. You should see your new page.
 
 By convention, Grails will map controller actions to views with the same name, in the `grails-app/views/[controller name]` directory.  You can override this and specify a particular view (or render different content altogether).
 
