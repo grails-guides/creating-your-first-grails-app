@@ -5,7 +5,7 @@ There are GSP tags for iteration as well - a very useful one is `<g:each>`. Let'
 [source,xml]
 .grails-app/views/home/index.gsp
 ----
-<%@ page import="Vehicle" %> //<1>
+<%@ page import="org.grails.guides.Vehicle" %> //<1>
 <html>
 <!-- ... -->
         <p>There are ${vehicleTotal} vehicles in the database.</p>
