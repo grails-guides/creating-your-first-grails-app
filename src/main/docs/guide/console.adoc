@@ -1,3 +1,5 @@
+:experimental:  // For kbd macro, Oct 2017
+
 Right now we don't have any controllers or views set up to play with our domain model. We'll get there shortly, but for now, let's fire up the http://docs.grails.org/latest/ref/Command%20Line/console.html[Grails Console] so we can explore what Grails and GORM have to offer.
 
 If the application is still running, shut it down with either kbd:[Ctrl+C], or (if running Grails in http://docs.grails.org/latest/guide/commandLine.html#interactiveMode[Interactive Mode], the `stop-app` command).
