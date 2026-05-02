@@ -1,0 +1,43 @@
+name: Gradle
+on:
+  push:
+    branches: [grails3, grails4, grails5, grails6]
+  pull_request:
+    branches: [grails3, grails4, grails5, grails6]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: java
+        name: Pick Java version from Gradle wrapper major
+        shell: bash
+        run: |
+          GRADLE_VER=$(grep -oE 'gradle-[0-9]+(\.[0-9]+)*' gradle/wrapper/gradle-wrapper.properties | head -1 | sed 's/gradle-//')
+          GRADLE_MAJOR=$(echo "$GRADLE_VER" | cut -d. -f1)
+          if [ -z "$GRADLE_MAJOR" ] || [ "$GRADLE_MAJOR" -le 4 ]; then
+            JAVA=8
+          elif [ "$GRADLE_MAJOR" -le 6 ]; then
+            JAVA=11
+          else
+            JAVA=17
+          fi
+          echo "Detected Gradle $GRADLE_VER (major=$GRADLE_MAJOR), using Java $JAVA"
+          echo "version=$JAVA" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ steps.java.outputs.version }}
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ steps.java.outputs.version }}-${{ hashFiles('**/*.gradle*', '**/settings.gradle*', '**/gradle.properties', 'gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-${{ steps.java.outputs.version }}-
+            ${{ runner.os }}-gradle-
+      - run: chmod +x ./gradlew
+      - run: ./gradlew --no-daemon check
