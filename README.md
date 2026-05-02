@@ -1,16 +1,11 @@
-# Generate a Guide
+# Creating your first Grails Application
 
-# Generate a Book
+This repository contains the worked sample app for the [Creating your first Grails Application](https://grails.apache.org/guides/creating-your-first-grails-app/6/guide/index.html) guide on the Apache Grails site.
 
-Please, run: 
+## Run the example
 
-    gradle publishGuide
+`./gradlew bootRun`
 
-    groovy book.groovy
+## Maintained at apache/grails-static-website
 
-Please follow the instructions to install the [asciidoctor-epub3](http://asciidoctor.org/docs/convert-asciidoc-to-epub/) ruby gem
-
-generate the book:
-
-    asciidoctor-epub3 -D build/bookOutput build/book/creating-your-first-grails-app.adoc
-
+The guide narrative is maintained at https://github.com/apache/grails-static-website. Changes to the guide content go there; this repo holds the worked sample app only.
