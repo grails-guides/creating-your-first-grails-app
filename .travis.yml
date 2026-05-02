@@ -1,8 +1,0 @@
-cache:
-  directories:
-  - "$HOME/.gradle"
-jdk:
-- openjdk8
-before_script:
-- rm -rf target
-script: "./travis-build.sh"
