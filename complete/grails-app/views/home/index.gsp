@@ -1,26 +1,14 @@
 <html>
 <head>
-    <meta name="layout" content="public"/> <!--1-->
+    <meta name="layout" content="main"/>
     <title>Home Page</title>
-
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
-
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
-
-    <asset:javascript src="jquery-3.1.1.js" />
-
-    <script type="text/javascript">
-      $( document ).ready(function() {
-        console.log( "jQuery 3.1.1 loaded!" );
-      });
-    </script>
 </head>
 <body>
 
 <div id="content" role="main">
     <section class="row colset-2-its">
-
         <h1>Welcome ${name}!</h1>
+
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
@@ -37,11 +25,10 @@
             </g:each>
         </ul>
 
-        <g:form action="updateName" style="margin: 0 auto; width:320px">
+        <g:form action="updateName" style="margin: 0 auto; width: 320px">
             <g:textField name="name" value="" placeholder="${name}"/>
-            <g:submitButton name="Update name" />
+            <g:submitButton name="Update name"/>
         </g:form>
-
     </section>
 </div>
 
