@@ -50,21 +50,16 @@ jobs:
           cleanup() { kill "$APP_PID" 2>/dev/null || true; }
           trap cleanup EXIT
           for i in $(seq 1 60); do
-            if grep -Eq 'Tomcat started on port.*8080' boot.log; then
-              echo "Application started on port 8080"
-              code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/ || true)
-              echo "GET / -> HTTP ${code}"
-              if [ "$code" != "200" ]; then
-                echo "Expected HTTP 200 from GET /, got ${code}"
-                cat boot.log
-                exit 1
-              fi
-              exit 0
-            fi
             if grep -q 'APPLICATION FAILED TO START' boot.log; then
               echo "Application failed to start"
               cat boot.log
               exit 1
+            fi
+            code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/ || true)
+            if [ "$code" = "200" ]; then
+              echo "Application started on port 8080"
+              echo "GET / -> HTTP ${code}"
+              exit 0
             fi
             sleep 5
           done
