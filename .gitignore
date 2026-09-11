@@ -1,6 +1,7 @@
-.gradle
-build
-target
-.idea
+# Per-directory .gitignore files (initial/.gitignore, complete/.gitignore)
+# already cover the Grails build artefacts. This top-level .gitignore is
+# only for repo-wide noise.
+.idea/
 *.iml
+.vscode/
 .DS_Store
