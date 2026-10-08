@@ -1,6 +1,6 @@
 # creating-your-first-grails-app
 
-Sample app for **Creating your first Grails Application** (Apache Grails `8.0.0-SNAPSHOT`, JDK 21).
+Sample app for **Creating your first Grails Application** (Apache Grails `8.0.0`, JDK 21).
 
 This is the foundational onboarding guide: domain classes, controllers, GSP views, services, scaffolding, and Spock tests. Work through it if you are new to Grails or want a refresher on the basics.
 
